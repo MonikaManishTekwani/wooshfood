@@ -5,7 +5,7 @@
         <xpath expr="link[last()]" position="after">
             <link rel="stylesheet" type="text/scss" href="/theme_clarico_vega/static/src/scss/mixins.scss"/>
             <link rel="stylesheet" type="text/scss" href="/theme_clarico_vega/static/src/scss/snippets.scss"/>
-            <link rel="stylesheet" type="text/scss" href="/theme_clarico_vega/static/src/scss/blog.scss" />
+<!--            <link rel="stylesheet" type="text/scss" href="/theme_clarico_vega/static/src/scss/blog.scss" />-->
             <link rel="stylesheet" type="text/scss" href="/theme_clarico_vega/static/src/scss/customise_option.scss"/>
             <link rel="stylesheet" type="text/scss" href="/theme_clarico_vega/static/src/scss/layout.scss"/>
             <link rel="stylesheet" type="text/scss" href="/theme_clarico_vega/static/src/scss/megamenu.scss"/>

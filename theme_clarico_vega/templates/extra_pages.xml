@@ -162,12 +162,12 @@
                                             consectetur,
                                             adipisci velit abil mutoi sovali uomil mitum.
                                         </p>
-                                        <div class="s_btn text-left pt16 pb16 mt32" data-name="Buttons">
-                                            <a href="/contactus"
-                                               class="btn btn-primary te_theme_button o_default_snippet_text">
-                                                Know more
-                                            </a>
-                                        </div>
+<!--                                        <div class="s_btn text-left pt16 pb16 mt32" data-name="Buttons">-->
+<!--                                            <a href="/contactus"-->
+<!--                                               class="btn btn-primary te_theme_button o_default_snippet_text">-->
+<!--                                                Know more-->
+<!--                                            </a>-->
+<!--                                        </div>-->
                                     </div>
                                 </div>
                             </div>

@@ -249,6 +249,8 @@
 	.modal-dialog > .modal-content > .modal-footer {
 		display:block;
 		text-align:right;
+		color: grey !important;
+		te_color: grey !important;
 
 		.modal-footer > :not(:last-child){
 			margin:5px 5px;
@@ -256,6 +258,7 @@
 		.btn:not(:disabled):not(.disabled){
 			margin:5px 5px;
 			width:100%;
+			color: grey !important;
 		}
 	}
 }

@@ -426,7 +426,7 @@
         button.btn.btn-primary.oe_search_button
         {
             background-color: transparent;
-            color: nth($f_color,4);
+            color: grey !important;
             border-radius: 25px !important;
             border-color:transparent;
         }

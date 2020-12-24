@@ -2,29 +2,29 @@
 <odoo>
     <!--==================== Product item used by /shop and /shop/cart ============================-->
     <template id="products_item_ept" inherit_id="website_sale.products_item">
-        <xpath expr="//a[@t-att-href='product_href']" position="replace">
-            <a t-att-href="product_href" class="d-block h-100" itemprop="url">
-                <t t-if="website.is_lazy_load">
-                    <span class="new_span d-flex h-100 justify-content-center align-items-center">
-                        <img t-attf-data-src="/web/image/product.template/#{product.id}/image_1920"
-                             t-attf-src="/web/image/website/#{website.id}/lazy_load_image"
-                             class="img img-fluid lazyload"
-                             alt="Product image"/>
-                    </span>
-                </t>
-                <t t-else="">
-                    <span t-field="product.image_1920"
-                          t-options="{'widget': 'image', 'class': 'lazy', 'preview_image': 'image_1024' if product_image_big else 'image_512', 'data-original': 'image_1024' if product_image_big else 'image_512'}"
-                          class="new_span d-flex h-100 justify-content-center align-items-center"/>
-                </t>
-            </a>
-        </xpath>
-        <xpath expr="//h6[hasclass('o_wsale_products_item_title')]/a" position="attributes">
-            <attribute name="t-attf-class">
-                product_name
-                #{'te_2_line' if (website.number_of_product_line == '2') else 'te_3_line' if (website.number_of_product_line == '3') else ''}
-            </attribute>
-        </xpath>
+<!--        <xpath expr="//a[@t-att-href='product_href']" position="replace">-->
+<!--            <a t-att-href="product_href" class="d-block h-100" itemprop="url">-->
+<!--                <t t-if="website.is_lazy_load">-->
+<!--                    <span class="new_span d-flex h-100 justify-content-center align-items-center">-->
+<!--                        <img t-attf-data-src="/web/image/product.template/#{product.id}/image_1920"-->
+<!--                             t-attf-src="/web/image/website/#{website.id}/lazy_load_image"-->
+<!--                             class="img img-fluid lazyload"-->
+<!--                             alt="Product image"/>-->
+<!--                    </span>-->
+<!--                </t>-->
+<!--&lt;!&ndash;                <t t-else="">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <span t-field="product.image_1920"&ndash;&gt;-->
+<!--&lt;!&ndash;                          t-options="{'widget': 'image', 'class': 'lazy', 'preview_image': 'image_1024' if product_image_big else 'image_512', 'data-original': 'image_1024' if product_image_big else 'image_512'}"&ndash;&gt;-->
+<!--&lt;!&ndash;                          class="new_span d-flex h-100 justify-content-center align-items-center"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                </t>&ndash;&gt;-->
+<!--            </a>-->
+<!--        </xpath>-->
+<!--        <xpath expr="//h6[hasclass('o_wsale_products_item_title')]/a" position="attributes">-->
+<!--            <attribute name="t-attf-class">-->
+<!--                product_name-->
+<!--                #{'te_2_line' if (website.number_of_product_line == '2') else 'te_3_line' if (website.number_of_product_line == '3') else ''}-->
+<!--            </attribute>-->
+<!--        </xpath>-->
         <xpath expr="//div[hasclass('o_wsale_product_information_text')]" position="attributes">
             <attribute name="t-attf-class">
                 p-2 o_wsale_product_information_text

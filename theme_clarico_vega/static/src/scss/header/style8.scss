@@ -609,7 +609,7 @@ body.fixed-header{
             }
             button.btn.btn-primary.oe_search_button
             {
-                color:nth($f_color,5);
+                color: grey !important;
             }
         }
     }

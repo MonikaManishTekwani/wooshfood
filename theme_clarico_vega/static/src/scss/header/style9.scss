@@ -255,7 +255,7 @@
 		background-color:nth($f_color,27);
 		border: 0;
 		font-size: nth($f_sizes,10);
-		color:$carousel-control-color;
+		color: grey !important;
 		@include position(absolute,50%,0);
 		transform: translateY(-50%);
 		& i.fa.fa-search:before{

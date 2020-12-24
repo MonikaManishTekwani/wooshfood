@@ -190,17 +190,17 @@
                     </checkbox>
                 </list>
                 <!-- Product Label Styles -->
-                <list string="Product Label">
-                    <checkbox>
-                        <opt data-xmlid="theme_clarico_vega.clarico_shop_products_label" data-reload="/"
-                             string="Product Label"/>
-                    </checkbox>
-                    <more data-depends="">
-                        <list>
-                            <opt data-widget="color" data-color="product_label" string="Default Color of Label"/>
-                        </list>
-                    </more>
-                </list>
+<!--                <list string="Product Label">-->
+<!--                    <checkbox>-->
+<!--                        <opt data-xmlid="theme_clarico_vega.clarico_shop_products_label" data-reload="/"-->
+<!--                             string="Product Label"/>-->
+<!--                    </checkbox>-->
+<!--                    <more data-depends="">-->
+<!--                        <list>-->
+<!--                            <opt data-widget="color" data-color="product_label" string="Default Color of Label"/>-->
+<!--                        </list>-->
+<!--                    </more>-->
+<!--                </list>-->
             </content>
             <!-- End by ept_1 -->
         </xpath>

@@ -4,16 +4,20 @@
 """
 
 from odoo import api, fields, models
+from odoo.tools.translate import _
+from odoo.http import request
 
 class WebsiteMenu(models.Model):
 
     _inherit = 'website.menu'
 
     is_dynamic_menu = fields.Boolean(string="Is Dynamic Menu", default=False)
-    menu_label_text = fields.Char(string="Menu Label Text", default=False,
+    menu_label_text = fields.Char(string="Menu Label Text",
                                     help="Menu Label text to display on the menu link", translate=True)
-    menu_label_text_color = fields.Char(string="Menu Label Text Color", default=False)
+    menu_label_text_color = fields.Char(string="Menu Label Text Color")
 
+    def write(self,vals):
+        return super(WebsiteMenu, self).write(vals)
     # Overide get_tree method to add is_dynamic_menu field
     @api.model
     def get_tree(self, website_id, menu_id=None):
@@ -47,3 +51,25 @@ class WebsiteMenu(models.Model):
 
         menu = menu_id and self.browse(menu_id) or self.env['website'].browse(website_id).menu_id
         return make_tree(menu)
+
+    @api.model
+    def save(self, website_id, data):
+        """
+        Removed the records from the ir.translation for the all the language when menu_lable_text is set to blank.
+        :param website_id:
+        :param data:
+        :return:res
+        """
+
+        res = super(WebsiteMenu, self).save(website_id, data)
+        if self.env['website'].browse(website_id).theme_id.name == 'theme_clarico_vega':
+            for menu in data['data']:
+                if menu['menu_label_text'] == '':
+                    menu_id = self.browse(menu['id'])
+                    menu_id.write({'menu_label_text':menu['menu_label_text']})
+                    transaltion_records = self.env["ir.translation"].search([('name', '=', 'website.menu,menu_label_text'), ('res_id', '=', menu['id'])])
+                    for rec in transaltion_records:
+                        rec.unlink()
+                    self._cr.execute("update website_menu set menu_label_text=NULL where id=%s"%(menu_id.id))
+
+            return True

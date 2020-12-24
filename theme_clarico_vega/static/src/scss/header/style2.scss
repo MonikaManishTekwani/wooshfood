@@ -351,7 +351,7 @@
       & button.oe_search_button
       {
         @include position(absolute,auto,0px,auto,auto);
-        color:nth($f_color,3);
+        color:grey !important;
         background-color:nth($f_color,27);
         z-index: 9;
       }

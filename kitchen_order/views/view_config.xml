@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="pos_config_view_form_inherit_pos_kitchenorder" model="ir.ui.view">
+        <field name="name">pos.config.form.inherit.pos.kitchen</field>
+        <field name="model">pos.config</field>
+        <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@id='btn_use_employees']" position='before'>
+                <label string="kitchen Product" for="iface_kitchen_order" class="col-lg-3 o_light_label"/>
+                <field name="iface_kitchen_order"/>
+            </xpath>
+
+        </field>
+    </record>
+
+
+    <record id="res_users_inherit_view" model="ir.ui.view">
+        <field name="name">res.users.inherit.view</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='access_rights']" position="after">
+                <page string="POS Kitchen">
+                    <group>
+                        <field name="kitchen_screen_user"/>
+                        <field name="pos_category_ids" widget="many2many_tags"
+                               attrs="{'required' : [('kitchen_screen_user', '!=', False)]}"/>
+                        <field name="default_pos" attrs="{'required' : [('kitchen_screen_user', '==', 'cook')]}"/>
+                        <field name="cook_user_ids"
+                               attrs="{'invisible': [('kitchen_screen_user', '=', 'cook')]}"
+                               widget="many2many_tags"
+                               domain="[('kitchen_screen_user','=','cook')]"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="saleorder_line_inherit" model="ir.ui.view">
+        <field name="name">sale.order.line.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree/field[@name='company_id']" position='after'>
+                <field name="order_line_note"/>
+                <field name="order_line_state"/>
+            </xpath>
+
+        </field>
+    </record>
+    <record id="posorder_line_inherit" model="ir.ui.view">
+        <field name="name">pos.order.line.inherit</field>
+        <field name="model">pos.order</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree/field[@name='currency_id']" position='after'>
+                <field name="table"/>
+                <field name="floor"/>
+                <field name="note"/>
+                <field name="order_line_state"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

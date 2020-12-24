@@ -47,14 +47,14 @@
                t-thumbnail="/theme_clarico_vega/static/src/img/snippets/snippets_icon/snippet5.jpg"/>
         </xpath>
         <!--==== Blog Post Style ===-->
-        <xpath expr="//t[@t-snippet='website_blog.s_latest_posts_big_picture']" position="after">
-            <t t-snippet="theme_clarico_vega.blog_post_style_2"
-               t-thumbnail="/theme_clarico_vega/static/src/img/snippets/snippets_icon/snippet34.jpg"/>
-            <t t-snippet="theme_clarico_vega.blog_post_style_3"
-               t-thumbnail="/theme_clarico_vega/static/src/img/snippets/snippets_icon/snippet35.jpg"/>
-            <t t-snippet="theme_clarico_vega.blog_post_style_4"
-               t-thumbnail="/theme_clarico_vega/static/src/img/snippets/snippets_icon/snippet36.jpg"/>
-        </xpath>
+<!--        <xpath expr="//t[@t-snippet='website_blog.s_latest_posts_big_picture']" position="after">-->
+<!--            <t t-snippet="theme_clarico_vega.blog_post_style_2"-->
+<!--               t-thumbnail="/theme_clarico_vega/static/src/img/snippets/snippets_icon/snippet34.jpg"/>-->
+<!--            <t t-snippet="theme_clarico_vega.blog_post_style_3"-->
+<!--               t-thumbnail="/theme_clarico_vega/static/src/img/snippets/snippets_icon/snippet35.jpg"/>-->
+<!--            <t t-snippet="theme_clarico_vega.blog_post_style_4"-->
+<!--               t-thumbnail="/theme_clarico_vega/static/src/img/snippets/snippets_icon/snippet36.jpg"/>-->
+<!--        </xpath>-->
         <xpath expr="//div[@id='snippet_structure']/div[hasclass('o_panel_body')]" position="after">
             <!--==== Title style ===-->
             <div class="o_panel_header">
@@ -636,9 +636,9 @@
                                 <li class="list-unstyled li_text py-3">Lorem ipsum</li>
                                 <li class="list-unstyled li_text py-3">phaedrum pertinacia</li>
                             </ul>
-                            <section class="s_btn">
-                                <a href="/contactus" class="btn btn-primary te_theme_button mx-4 mb32">Know more</a>
-                            </section>
+<!--                            <section class="s_btn">-->
+<!--                                <a href="/contactus" class="btn btn-primary te_theme_button mx-4 mb32">Know more</a>-->
+<!--                            </section>-->
                         </section>
                     </div>
                     <div
@@ -660,9 +660,9 @@
                                 <li class="list-unstyled li_text py-3">Lorem ipsum</li>
                                 <li class="list-unstyled li_text py-3">phaedrum pertinacia</li>
                             </ul>
-                            <section>
-                                <a href="/contactus" class="btn btn-primary te_theme_button mx-4 mb32">Know more</a>
-                            </section>
+<!--                            <section>-->
+<!--                                <a href="/contactus" class="btn btn-primary te_theme_button mx-4 mb32">Know more</a>-->
+<!--                            </section>-->
                         </section>
                     </div>
                     <div
@@ -684,9 +684,9 @@
                                 <li class="list-unstyled li_text py-3">Lorem ipsum</li>
                                 <li class="list-unstyled li_text py-3">phaedrum pertinacia</li>
                             </ul>
-                            <section>
-                                <a href="/contactus" class="btn btn-primary te_theme_button mx-4 mb32">Know more</a>
-                            </section>
+<!--                            <section>-->
+<!--                                <a href="/contactus" class="btn btn-primary te_theme_button mx-4 mb32">Know more</a>-->
+<!--                            </section>-->
                         </section>
                     </div>
                     <div
@@ -708,9 +708,9 @@
                                 <li class="list-unstyled li_text py-3">Lorem ipsum</li>
                                 <li class="list-unstyled li_text py-3">phaedrum pertinacia</li>
                             </ul>
-                            <section>
-                                <a href="/contactus" class="btn btn-primary te_theme_button mx-4 mb32">Know more</a>
-                            </section>
+<!--                            <section>-->
+<!--                                <a href="/contactus" class="btn btn-primary te_theme_button mx-4 mb32">Know more</a>-->
+<!--                            </section>-->
                         </section>
                     </div>
                 </div>
@@ -1328,11 +1328,11 @@
                                     Delenit molestie sententiae ea his, usu augue nemore prompta eu
                                 </p>
                             </div>
-                            <div class="col-lg-12 s_btn text-center te_t_res_button pt16 pb16"
-                                 data-name="Buttons">
-                                <a href="/aboutus" class="btn btn-primary te_theme_button">Know more</a>
-                                <a href="/contactus" class="btn btn-primary te_theme_button">Know more</a>
-                            </div>
+<!--                            <div class="col-lg-12 s_btn text-center te_t_res_button pt16 pb16"-->
+<!--                                 data-name="Buttons">-->
+<!--                                <a href="/aboutus" class="btn btn-primary te_theme_button">Know more</a>-->
+<!--                                <a href="/contactus" class="btn btn-primary te_theme_button">Know more</a>-->
+<!--                            </div>-->
                         </section>
                     </div>
                 </section>
@@ -1356,11 +1356,11 @@
                                     Delenit molestie sententiae ea his, usu augue nemore prompta eu
                                 </p>
                             </div>
-                            <div class="col-lg-12 s_btn text-center te_t_res_button pt16 pb16"
-                                 data-name="Buttons">
-                                <a href="/aboutus" class="btn btn-primary te_theme_button">Know more</a>
-                                <a href="/contactus" class="btn btn-primary te_theme_button">Know more</a>
-                            </div>
+<!--                            <div class="col-lg-12 s_btn text-center te_t_res_button pt16 pb16"-->
+<!--                                 data-name="Buttons">-->
+<!--                                <a href="/aboutus" class="btn btn-primary te_theme_button">Know more</a>-->
+<!--                                <a href="/contactus" class="btn btn-primary te_theme_button">Know more</a>-->
+<!--                            </div>-->
                         </section>
                     </div>
                 </section>
@@ -5537,9 +5537,9 @@
                                 <li class="list-unstyled py-2"><i class="fa fa-check"></i>Lorem ipsum dolor
                                 </li>
                             </ul>
-                            <div>
-                                <a href="/contactus" class="btn btn-primary te_theme_button mb32">Know more</a>
-                            </div>
+<!--                            <div>-->
+<!--                                <a href="/contactus" class="btn btn-primary te_theme_button mb32">Know more</a>-->
+<!--                            </div>-->
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4 text-center pt16" data-name="Box">
@@ -5574,9 +5574,9 @@
                                 <li class="list-unstyled py-2"><i class="fa fa-check"></i>Lorem ipsum dolor
                                 </li>
                             </ul>
-                            <div>
-                                <a href="/contactus" class="btn btn-primary te_theme_button mb32">Know more</a>
-                            </div>
+<!--                            <div>-->
+<!--                                <a href="/contactus" class="btn btn-primary te_theme_button mb32">Know more</a>-->
+<!--                            </div>-->
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4 text-center pt16" data-name="Box">
@@ -5611,9 +5611,9 @@
                                 <li class="list-unstyled py-2"><i class="fa fa-check"></i>Lorem ipsum dolor
                                 </li>
                             </ul>
-                            <div>
-                                <a href="/contactus" class="btn btn-primary te_theme_button mb32">Know more</a>
-                            </div>
+<!--                            <div>-->
+<!--                                <a href="/contactus" class="btn btn-primary te_theme_button mb32">Know more</a>-->
+<!--                            </div>-->
                         </div>
                     </div>
                 </div>
@@ -6172,9 +6172,9 @@
                                 quidam, Duis meis quas vim ex, ius no oblique phaedrum pertinacia. Ornatus referrentur
                                 nec,
                             </p>
-                            <div>
-                                <a href="/contactus" class="btn btn-primary te_theme_button mt-3 mb32">Know more</a>
-                            </div>
+<!--                            <div>-->
+<!--                                <a href="/contactus" class="btn btn-primary te_theme_button mt-3 mb32">Know more</a>-->
+<!--                            </div>-->
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4 text-center mt16 mt-lg-0" data-name="Box">
@@ -6190,9 +6190,9 @@
                                 quidam, Duis meis quas vim ex, ius no oblique phaedrum pertinacia. Ornatus referrentur
                                 nec,
                             </p>
-                            <div>
-                                <a href="/contactus" class="btn btn-primary te_theme_button mt-3 mb32">Know more</a>
-                            </div>
+<!--                            <div>-->
+<!--                                <a href="/contactus" class="btn btn-primary te_theme_button mt-3 mb32">Know more</a>-->
+<!--                            </div>-->
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4 text-center mt16 mt-lg-0" data-name="Box">
@@ -6208,9 +6208,9 @@
                                 quidam, Duis meis quas vim ex, ius no oblique phaedrum pertinacia. Ornatus referrentur
                                 nec,
                             </p>
-                            <div>
-                                <a href="/contactus" class="btn btn-primary te_theme_button mt-3 mb32">Know more</a>
-                            </div>
+<!--                            <div>-->
+<!--                                <a href="/contactus" class="btn btn-primary te_theme_button mt-3 mb32">Know more</a>-->
+<!--                            </div>-->
                         </div>
                     </div>
                 </div>
@@ -6242,9 +6242,9 @@
                                 <div class="te_slider_10_content mt-2">
                                     <p>Lorem Ipsum Dolor Sit Amet</p>
                                 </div>
-                                <div class="s_btn text-left pt16 pb16 mt16" data-name="Buttons">
-                                    <a href="/contactus" class="btn btn-primary te_theme_button">Know more</a>
-                                </div>
+<!--                                <div class="s_btn text-left pt16 pb16 mt16" data-name="Buttons">-->
+<!--                                    <a href="/contactus" class="btn btn-primary te_theme_button">Know more</a>-->
+<!--                                </div>-->
                             </div>
                         </div>
                     </div>
@@ -6262,9 +6262,9 @@
                                 <div class="te_slider_10_content mt-2">
                                     <p>Lorem Ipsum Dolor Sit Amet</p>
                                 </div>
-                                <div class="s_btn text-left pt16 pb16 mt16" data-name="Buttons">
-                                    <a href="/contactus" class="btn btn-primary te_theme_button">Know more</a>
-                                </div>
+<!--                                <div class="s_btn text-left pt16 pb16 mt16" data-name="Buttons">-->
+<!--                                    <a href="/contactus" class="btn btn-primary te_theme_button">Know more</a>-->
+<!--                                </div>-->
                             </div>
                         </div>
                     </div>
@@ -6309,9 +6309,9 @@
                                         no oblique phaedrum pertinacia. Ornatus referrentur nec,
                                     </p>
                                 </div>
-                                <div class="s_btn pb32" data-name="Buttons">
-                                    <a href="/contactus" class="btn btn-primary te_theme_button">Know more</a>
-                                </div>
+<!--                                <div class="s_btn pb32" data-name="Buttons">-->
+<!--                                    <a href="/contactus" class="btn btn-primary te_theme_button">Know more</a>-->
+<!--                                </div>-->
                             </div>
                         </div>
                     </div>
@@ -6330,9 +6330,9 @@
                                         no oblique phaedrum pertinacia. Ornatus referrentur nec,
                                     </p>
                                 </div>
-                                <div class="s_btn pb32" data-name="Buttons">
-                                    <a href="/contactus" class="btn btn-primary te_theme_button">Know more</a>
-                                </div>
+<!--                                <div class="s_btn pb32" data-name="Buttons">-->
+<!--                                    <a href="/contactus" class="btn btn-primary te_theme_button">Know more</a>-->
+<!--                                </div>-->
                             </div>
                         </div>
                     </div>

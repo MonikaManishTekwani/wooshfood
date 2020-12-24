@@ -47,18 +47,20 @@ body
 				padding: 0.25rem 0.25rem;
 				margin: 1%;
 				border: 1px solid $border-color;
+				color: grey !important;
 				
 				> .o_color_preview
 				{
 					width: 100%;
 					border:0;
 					height: 30px;
+					color: grey !important;
 				}
 				.o_color_name
 				{
 					@include position(absolute,1.4em,auto,auto,1.5em);
 					z-index: 9;
-					color: nth($f_color,5);
+					color: grey !important;
 				}
 			}
 		}
@@ -66,14 +68,15 @@ body
 		{
 			.btn:not(.o_btn_preview).btn-sm .o_color_name
 			{
-				color:nth($f_color,5);
-				 mix-blend-mode: difference;
+				color: grey !important;
+			    mix-blend-mode: difference;
 			}
 		}
 	}
 	& .btn:not(.o_btn_preview).btn-secondary
 	{
 		background-color: nth($f_color,5) !important;
+		color: grey !important;
 	}
 	& .nav .nav-item
 	{
@@ -94,7 +97,7 @@ body
 			border: 0;
 			@include box-shadow(0px 0px 10px 0 rgba(50, 50, 93, 0.1))
 			border-right: 2px solid nth($f_color,20);
-			color: nth($f_color,3);
+            color: grey !important;
 			background-color: 0,0,0,5;
 		}
 	}
