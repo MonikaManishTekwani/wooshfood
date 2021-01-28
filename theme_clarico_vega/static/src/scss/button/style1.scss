@@ -1,6 +1,6 @@
 /*================== Button Style 1 ===============================*/
 .te_theme_button {
-    color: nth($f_color,19);
+    color: black !important;
     border-radius: 0 !important;
     display: inline-block;
     @include transition(all,300ms,null)
@@ -9,7 +9,7 @@
 
     &.btn-secondary, &.btn-link
 	{
-		color: theme-color("secondary") !important;
+		color: black !important;
 		border-color:theme-color("secondary") !important;
 		background-color: nth($f_color,27) !important;
 		&:hover {

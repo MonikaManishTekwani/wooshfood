@@ -334,8 +334,8 @@
 	        .btn-primary:not(:disabled):not(.disabled).active,
 	        .show > .btn-primary.dropdown-toggle
 	        {
-	            color: nth($f_color,3);
-                background-color: nth($f_color,5);
+	            color:  black;
+                background-color: transparent;
 	        }
 	        button.btn.btn-primary.oe_search_button
 	        {

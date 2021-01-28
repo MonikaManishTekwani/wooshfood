@@ -47,14 +47,14 @@ body
 				padding: 0.25rem 0.25rem;
 				margin: 1%;
 				border: 1px solid $border-color;
-				color: grey !important;
+				color: black !important;
 				
 				> .o_color_preview
 				{
 					width: 100%;
 					border:0;
 					height: 30px;
-					color: grey !important;
+					color: black !important;
 				}
 				.o_color_name
 				{
@@ -68,7 +68,7 @@ body
 		{
 			.btn:not(.o_btn_preview).btn-sm .o_color_name
 			{
-				color: grey !important;
+				color: black !important;
 			    mix-blend-mode: difference;
 			}
 		}
@@ -76,7 +76,7 @@ body
 	& .btn:not(.o_btn_preview).btn-secondary
 	{
 		background-color: nth($f_color,5) !important;
-		color: grey !important;
+		color: black !important;
 	}
 	& .nav .nav-item
 	{
@@ -108,7 +108,7 @@ body
 				a.nav-link
 				{
 					background-color: nth($f_color,19);
-					color:nth($f_color,5);
+					color: black;
 				}
 			}
 		}

@@ -1,6 +1,6 @@
 /*============================ Button Style 7 ===============================*/
 .te_theme_button {
-	color: nth($f_color,05);
+	color: black !important;
     display: inline-block;
     @include position(relative)
     @include transition(all,0.3s,null)

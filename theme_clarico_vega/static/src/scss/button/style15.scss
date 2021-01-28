@@ -5,7 +5,7 @@
     padding: 0.675rem 1.2rem;
     border: none !important;
     background:nth($f_color,19);
-    color:nth($f_color,5);
+    color: black !important;
     @include transition(all, 0.3s, ease-out);
 
     &.btn-secondary, &.btn-link
@@ -14,7 +14,7 @@
 
 		&:hover {
 			background-color:nth($f_color,5) !important;
-            color:theme-color('secondary') !important;
+            color: black !important;
         }
     }
     &.btn-danger

@@ -189,10 +189,12 @@
 	        .fa {
 	            @include o-position-absolute(0, $left: 0);
 	            line-height: $line-height-base;
+	            color: black;
 	            + span {
 	                display: block;
 	                padding-left: 1.28571429em + 0.5em;
 	 				@include style(3,1,inherit,1.8)
+	 				color: black;
 	            }
 	        }
 	    }

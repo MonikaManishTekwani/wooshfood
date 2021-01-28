@@ -2,12 +2,13 @@
 <odoo>
     <!-- ======================= Header style option 1========================= -->
 
-    <template id="option_header_brand_logo_new" inherit_id="website.option_header_brand_logo" name="Header Brand Logo" active="True">
-    <xpath expr="//a[contains(@t-attf-class, 'navbar-brand logo')]" position="replace">
-        <a href="/">
+    <template id="option_header_brand_logo_new" inherit_id="website.placeholder_header_brand" name="Header Brand Logo" active="True">
+    <xpath expr="//a[contains(@t-attf-class, 'navbar-brand logo #{_link_class}')]" position="replace">>
             <span/>
-<!--            <span t-field="website.logo" t-options="{'widget': 'image'}" role="img" t-att-aria-label="'Logo of %s' % website.name" t-att-title="website.name"/>-->
+      <a href="/" t-attf-class="navbar-brand logo #{_link_class}">
+            <span t-field="website.logo" t-options="{'widget': 'image'}" role="img" t-att-aria-label="'Logo of %s' % website.name" t-att-title="website.name"/>
         </a>
+
     </xpath>
     </template>
     <template id="customize_header_style_1" inherit_id="portal.frontend_layout"
@@ -27,9 +28,8 @@
                 </t>
             </div>
         </xpath>
-<!--        <xpath expr="//div[@id='top_menu_container'" position="replace">-->
-<!--            <div/>-->
-<!--        </xpath>-->
+        <xpath expr="//div[@id='top_menu_container']" position="replace">
+        </xpath>
         <xpath expr="//header//nav" position="before">
             <div class="te_header_before_overlay body">
                 <div class="container">
@@ -159,20 +159,20 @@
     <template id="customize_header_style_2" inherit_id="portal.frontend_layout"
               active="False" name="Header style 2">
         <!-- vertical menu -->
-<!--        <xpath expr="//div[@id='wrapwrap']/header" position="after">-->
-<!--            <div class="te_vertical_menu">-->
-<!--                <section>-->
-<!--                    <a href="#" class="te_menu_btn_close">-->
-<!--                        <i class="fa fa-times te_menu_icon_close"></i>-->
-<!--                    </a>-->
-<!--                </section>-->
-<!--                <t t-set="website_vertical_menu"-->
-<!--                   t-value="request.website.viewref('theme_clarico_vega.menu_vertical').active"/>-->
-<!--                <t t-if="website_vertical_menu">-->
-<!--                    <div t-call="theme_clarico_vega.menu_vertical"/>-->
-<!--                </t>-->
-<!--            </div>-->
-<!--        </xpath>-->
+        <xpath expr="//div[@id='wrapwrap']/header" position="after">
+            <div class="te_vertical_menu">
+                <section>
+                    <a href="#" class="te_menu_btn_close">
+                        <i class="fa fa-times te_menu_icon_close"></i>
+                    </a>
+                </section>
+                <t t-set="website_vertical_menu"
+                   t-value="request.website.viewref('theme_clarico_vega.menu_vertical').active"/>
+                <t t-if="website_vertical_menu">
+                    <div t-call="theme_clarico_vega.menu_vertical"/>
+                </t>
+            </div>
+        </xpath>
         <xpath expr="//header" position="before">
             <div class="te_header_before_overlay" t-att-style="color:black;">
                 <div class="te_header_style_2_main">
@@ -236,7 +236,7 @@
                                                 </div>
                                             </div>
                                             <div groups="base.group_public" class="te_signin"
-                                                 t-if="request.website.viewref('portal.portal_show_sign_in').active">
+                                                 t-if="request.website.viewref('portal.user_sign_in').active">
                                                 <t t-if="request.website.viewref('theme_clarico_vega.login_popup_ept').active">
                                                     <a href="#loginPopup" class="btn btn-link">
                                                         <span class="te_user_account_name">Sign in</span>
@@ -311,18 +311,18 @@
                 </div>
             </div>
         </xpath>
-<!--        <xpath expr="//nav[hasclass('navbar-expand-md')]" position="attributes">-->
-<!--            <attribute name="class">navbar navbar-expand-md te_header_navbar navbar-light-->
-<!--            </attribute>-->
-<!--        </xpath>-->
-<!--        <xpath expr="//ul[@id='top_menu']/li[hasclass('divider')][last()]"-->
-<!--               position="replace">-->
-<!--        </xpath>-->
-<!--        <xpath expr="//ul[@id='top_menu']/li[hasclass('dropdown')]"-->
-<!--               position="replace">-->
-<!--        </xpath>-->
-<!--        <xpath expr="//li[contains(@t-attf-class, 'o_wsale_my_cart')]" position="replace">-->
-<!--        </xpath>-->
+        <xpath expr="//nav[hasclass('navbar-expand-md')]" position="attributes">
+            <attribute name="class">navbar navbar-expand-md te_header_navbar navbar-light
+            </attribute>
+        </xpath>
+        <xpath expr="//ul[@id='top_menu']/li[hasclass('divider')][last()]"
+               position="replace">
+        </xpath>
+        <xpath expr="//ul[@id='top_menu']/li[hasclass('dropdown')]"
+               position="replace">
+        </xpath>
+        <xpath expr="//li[contains(@t-attf-class, 'o_wsale_my_cart')]" position="replace">
+        </xpath>
 
     </template>
     <!-- ======================= Header style option 3========================= -->
@@ -435,7 +435,7 @@
                                     </div>
                                 </div>
                                 <div groups="base.group_public" class="te_signin"
-                                     t-if="request.website.viewref('portal.portal_show_sign_in').active">
+                                     t-if="request.website.viewref('portal.user_sign_in').active">
                                     <t t-if="request.website.viewref('theme_clarico_vega.login_popup_ept').active">
                                         <a href="#loginPopup" class="btn btn-link">
                                             <span class="te_user_account_name">Sign in</span>
@@ -609,7 +609,7 @@
                                     </div>
                                 </div>
                                 <div groups="base.group_public" class="te_signin"
-                                     t-if="request.website.viewref('portal.portal_show_sign_in').active">
+                                     t-if="request.website.viewref('portal.user_sign_in').active">
                                     <t t-if="request.website.viewref('theme_clarico_vega.login_popup_ept').active">
                                         <a href="#loginPopup" class="btn-link">
                                             <span class="te_user_account_name">Sign in</span>
@@ -634,18 +634,18 @@
                 </div>
             </div>
         </xpath>
-<!--        <xpath expr="//nav[hasclass('navbar-expand-md')]" position="attributes">-->
-<!--            <attribute name="class">navbar navbar-expand-md te_header_navbar navbar-light-->
-<!--            </attribute>-->
-<!--        </xpath>-->
-<!--        <xpath expr="//ul[@id='top_menu']/li[hasclass('divider')][last()]"-->
-<!--               position="replace">-->
-<!--        </xpath>-->
-<!--        <xpath expr="//ul[@id='top_menu']/li[hasclass('dropdown')]"-->
-<!--               position="replace">-->
-<!--        </xpath>-->
-<!--        <xpath expr="//li[contains(@t-attf-class, 'o_wsale_my_cart')]" position="replace">-->
-<!--        </xpath>-->
+        <xpath expr="//nav[hasclass('navbar-expand-md')]" position="attributes">
+            <attribute name="class">navbar navbar-expand-md te_header_navbar navbar-light
+            </attribute>
+        </xpath>
+        <xpath expr="//ul[@id='top_menu']/li[hasclass('divider')][last()]"
+               position="replace">
+        </xpath>
+        <xpath expr="//ul[@id='top_menu']/li[hasclass('dropdown')]"
+               position="replace">
+        </xpath>
+        <xpath expr="//li[contains(@t-attf-class, 'o_wsale_my_cart')]" position="replace">
+        </xpath>
 
     </template>
     <!-- ======================= Header style option 5========================= -->
@@ -774,7 +774,7 @@
                                     </div>
                                 </div>
                                 <div groups="base.group_public" class="px-2 te_signin"
-                                     t-if="request.website.viewref('portal.portal_show_sign_in').active">
+                                     t-if="request.website.viewref('portal.user_sign_in').active">
                                     <t t-if="request.website.viewref('theme_clarico_vega.login_popup_ept').active">
                                         <a href="#loginPopup" class="btn-link">
                                             <span class="te_user_account_icon">
@@ -797,19 +797,19 @@
                 </div>
             </div>
         </xpath>
-<!--        <xpath expr="//nav[hasclass('navbar-expand-md')]" position="attributes">-->
-<!--            <attribute name="class">navbar navbar-expand-md te_header_navbar navbar-light-->
-<!--                py-1 px-0-->
-<!--            </attribute>-->
-<!--        </xpath>-->
-<!--        <xpath expr="//ul[@id='top_menu']/li[hasclass('divider')][last()]"-->
-<!--               position="replace">-->
-<!--        </xpath>-->
-<!--        <xpath expr="//ul[@id='top_menu']/li[hasclass('dropdown')]"-->
-<!--               position="replace">-->
-<!--        </xpath>-->
-<!--        <xpath expr="//li[contains(@t-attf-class, 'o_wsale_my_cart')]" position="replace">-->
-<!--        </xpath>-->
+        <xpath expr="//nav[hasclass('navbar-expand-md')]" position="attributes">
+            <attribute name="class">navbar navbar-expand-md te_header_navbar navbar-light
+                py-1 px-0
+            </attribute>
+        </xpath>
+        <xpath expr="//ul[@id='top_menu']/li[hasclass('divider')][last()]"
+               position="replace">
+        </xpath>
+        <xpath expr="//ul[@id='top_menu']/li[hasclass('dropdown')]"
+               position="replace">
+        </xpath>
+        <xpath expr="//li[contains(@t-attf-class, 'o_wsale_my_cart')]" position="replace">
+        </xpath>
     </template>
     <!-- ======================= Header style option 6========================= -->
     <template id="customize_header_style_6" inherit_id="portal.frontend_layout"
@@ -933,7 +933,7 @@
                                         </div>
                                     </div>
                                     <div groups="base.group_public" class="te_signin"
-                                         t-if="request.website.viewref('portal.portal_show_sign_in').active">
+                                         t-if="request.website.viewref('portal.user_sign_in').active">
                                         <t t-if="request.website.viewref('theme_clarico_vega.login_popup_ept').active">
                                             <a href="#loginPopup" class="btn-link">
                                                 <span class="te_user_account_name">Sign in</span>
@@ -965,19 +965,19 @@
                 </div>
             </div>
         </xpath>
-<!--        <xpath expr="//nav[hasclass('navbar-expand-md')]" position="attributes">-->
-<!--            <attribute name="class">navbar navbar-expand-md te_header_navbar navbar-light-->
-<!--                px-0 py-2-->
-<!--            </attribute>-->
-<!--        </xpath>-->
-<!--        <xpath expr="//ul[@id='top_menu']/li[hasclass('divider')][last()]"-->
-<!--               position="replace">-->
-<!--        </xpath>-->
-<!--        <xpath expr="//ul[@id='top_menu']/li[hasclass('dropdown')]"-->
-<!--               position="replace">-->
-<!--        </xpath>-->
-<!--        <xpath expr="//li[contains(@t-attf-class, 'o_wsale_my_cart')]" position="replace">-->
-<!--        </xpath>-->
+        <xpath expr="//nav[hasclass('navbar-expand-md')]" position="attributes">
+            <attribute name="class">navbar navbar-expand-md te_header_navbar navbar-light
+                px-0 py-2
+            </attribute>
+        </xpath>
+        <xpath expr="//ul[@id='top_menu']/li[hasclass('divider')][last()]"
+               position="replace">
+        </xpath>
+        <xpath expr="//ul[@id='top_menu']/li[hasclass('dropdown')]"
+               position="replace">
+        </xpath>
+        <xpath expr="//li[contains(@t-attf-class, 'o_wsale_my_cart')]" position="replace">
+        </xpath>
     </template>
     <!-- ======================= Header style option 7 ========================= -->
     <template id="customize_header_style_7" inherit_id="portal.frontend_layout"
@@ -1109,18 +1109,18 @@
                 </div>
             </div>
         </xpath>
-<!--        <xpath expr="//nav[hasclass('navbar-expand-md')]" position="attributes">-->
-<!--            <attribute name="class">navbar navbar-expand-lg te_header_navbar navbar-light-->
-<!--            </attribute>-->
-<!--        </xpath>-->
-<!--        <xpath expr="//ul[@id='top_menu']/li[hasclass('divider')][last()]"-->
-<!--               position="replace">-->
-<!--        </xpath>-->
-<!--        <xpath expr="//ul[@id='top_menu']/li[hasclass('dropdown')]"-->
-<!--               position="replace">-->
-<!--        </xpath>-->
-<!--        <xpath expr="//li[contains(@t-attf-class, 'o_wsale_my_cart')]" position="replace">-->
-<!--        </xpath>-->
+        <xpath expr="//nav[hasclass('navbar-expand-md')]" position="attributes">
+            <attribute name="class">navbar navbar-expand-lg te_header_navbar navbar-light
+            </attribute>
+        </xpath>
+        <xpath expr="//ul[@id='top_menu']/li[hasclass('divider')][last()]"
+               position="replace">
+        </xpath>
+        <xpath expr="//ul[@id='top_menu']/li[hasclass('dropdown')]"
+               position="replace">
+        </xpath>
+        <xpath expr="//li[contains(@t-attf-class, 'o_wsale_my_cart')]" position="replace">
+        </xpath>
 
     </template>
     <!-- ======================= Header style option 8========================= -->
@@ -1201,11 +1201,11 @@
         <xpath expr="//div[@id='top_menu_collapse']" position="attributes">
             <attribute name="class">collapse navbar-collapse</attribute>
         </xpath>
-<!--        <xpath expr="//nav[hasclass('navbar-expand-md')]" position="attributes">-->
-<!--            <attribute name="class">navbar navbar-expand-md te_header_navbar navbar-light-->
-<!--                py-1 px-0-->
-<!--            </attribute>-->
-<!--        </xpath>-->
+        <xpath expr="//nav[hasclass('navbar-expand-md')]" position="attributes">
+            <attribute name="class">navbar navbar-expand-md te_header_navbar navbar-light
+                py-1 px-0
+            </attribute>
+        </xpath>
         <xpath expr="//div[@id='top_menu_collapse']" position="after">
             <div class="col-lg-2 col-md-3 col-sm-8 col-6 te_header_right_icon">
                 <div class="te_cart_icon_head">
@@ -1255,7 +1255,7 @@
                         </div>
                     </div>
                     <div groups="base.group_public" class="px-2 te_signin"
-                         t-if="request.website.viewref('portal.portal_show_sign_in').active">
+                         t-if="request.website.viewref('portal.user_sign_in').active">
                         <t t-if="request.website.viewref('theme_clarico_vega.login_popup_ept').active">
                             <a href="#loginPopup" class="btn-link">
                                 <span class="te_user_account_icon">
@@ -1341,11 +1341,11 @@
         <xpath expr="//div[@id='top_menu_collapse']" position="attributes">
             <attribute name="class">collapse navbar-collapse</attribute>
         </xpath>
-<!--        <xpath expr="//nav[hasclass('navbar-expand-md')]" position="attributes">-->
-<!--            <attribute name="class">navbar navbar-expand-md te_header_navbar te_header_9_navbar navbar-light-->
-<!--                py-1 px-0-->
-<!--            </attribute>-->
-<!--        </xpath>-->
+        <xpath expr="//nav[hasclass('navbar-expand-md')]" position="attributes">
+            <attribute name="class">navbar navbar-expand-md te_header_navbar te_header_9_navbar navbar-light
+                py-1 px-0
+            </attribute>
+        </xpath>
         <xpath expr="//div[@id='top_menu_collapse']" position="after">
             <div class="col-lg-5 col-md-6 col-sm-8 col-10 te_header_right_icon">
                 <div class="px-1 te_header_9_srch_icon te_srch_icon">
@@ -1400,7 +1400,7 @@
                         </div>
                     </div>
                     <div groups="base.group_public" class="te_signin"
-                         t-if="request.website.viewref('portal.portal_show_sign_in').active">
+                         t-if="request.website.viewref('portal.user_sign_in').active">
                         <t t-if="request.website.viewref('theme_clarico_vega.login_popup_ept').active">
                             <a href="#loginPopup" class="btn-link">
                                 <span class="te_user_account_icon d-block">
@@ -1428,14 +1428,14 @@
                 </div>
             </div>
         </xpath>
-<!--        <xpath expr="//ul[@id='top_menu']/li[hasclass('divider')][last()]"-->
-<!--               position="replace">-->
-<!--        </xpath>-->
-<!--        <xpath expr="//ul[@id='top_menu']/li[hasclass('dropdown')]"-->
-<!--               position="replace">-->
-<!--        </xpath>-->
-<!--        <xpath expr="//li[contains(@t-attf-class, 'o_wsale_my_cart')]" position="replace">-->
-<!--        </xpath>-->
+        <xpath expr="//ul[@id='top_menu']/li[hasclass('divider')][last()]"
+               position="replace">
+        </xpath>
+        <xpath expr="//ul[@id='top_menu']/li[hasclass('dropdown')]"
+               position="replace">
+        </xpath>
+        <xpath expr="//li[contains(@t-attf-class, 'o_wsale_my_cart')]" position="replace">
+        </xpath>
     </template>
     <!-- ======================= Header style option 10========================= -->
     <template id="customize_header_style_10" inherit_id="portal.frontend_layout"
@@ -1467,11 +1467,11 @@
         <xpath expr="//div[@id='top_menu_collapse']" position="attributes">
             <attribute name="class">collapse navbar-collapse</attribute>
         </xpath>
-<!--        <xpath expr="//nav[hasclass('navbar-expand-md')]" position="attributes">-->
-<!--            <attribute name="class">navbar navbar-expand-md te_header_navbar te_header_navbar_10 navbar-light-->
-<!--                py-1 px-0-->
-<!--            </attribute>-->
-<!--        </xpath>-->
+        <xpath expr="//nav[hasclass('navbar-expand-md')]" position="attributes">
+            <attribute name="class">navbar navbar-expand-md te_header_navbar te_header_navbar_10 navbar-light
+                py-1 px-0
+            </attribute>
+        </xpath>
         <xpath expr="//div[@id='top_menu_collapse']" position="after">
             <div class="col-lg-6 col-md-3 col-sm-8 col-6 te_header_right_icon">
                 <div class="te_header_icon_left">
@@ -1532,7 +1532,7 @@
                             </div>
                         </div>
                         <div groups="base.group_public" class="px-2 te_signin"
-                             t-if="request.website.viewref('portal.portal_show_sign_in').active">
+                             t-if="request.website.viewref('portal.user_sign_in').active">
                             <t t-if="request.website.viewref('theme_clarico_vega.login_popup_ept').active">
                                 <a href="#loginPopup" class="btn-link">
                                     <span class="te_user_account_icon">
@@ -1600,11 +1600,11 @@
         <xpath expr="//div[@id='top_menu_collapse']" position="attributes">
             <attribute name="class">collapse navbar-collapse</attribute>
         </xpath>
-<!--        <xpath expr="//nav[hasclass('navbar-expand-md')]" position="attributes">-->
-<!--            <attribute name="class">navbar navbar-expand-md te_header_navbar te_header_11_navbar navbar-light-->
-<!--                py-1 px-0-->
-<!--            </attribute>-->
-<!--        </xpath>-->
+        <xpath expr="//nav[hasclass('navbar-expand-md')]" position="attributes">
+            <attribute name="class">navbar navbar-expand-md te_header_navbar te_header_11_navbar navbar-light
+                py-1 px-0
+            </attribute>
+        </xpath>
         <xpath expr="//div[@id='top_menu_collapse']" position="after">
             <div class="col-lg-5 col-md-6 col-sm-8 col-10 te_header_right_icon">
                 <div class="head_11_icon_search">
@@ -1671,7 +1671,7 @@
                             </div>
                         </div>
                         <div groups="base.group_public" class="te_signin"
-                             t-if="request.website.viewref('portal.portal_show_sign_in').active">
+                             t-if="request.website.viewref('portal.user_sign_in').active">
                             <t t-if="request.website.viewref('theme_clarico_vega.login_popup_ept').active">
                                 <a t-attf-href="#loginPopup" class="btn-link">
                                     <span class="te_user_account_icon d-block">
@@ -1756,13 +1756,13 @@
     </template>
 
     <!-- Replaced signin from header -->
-<!--    <template id="portal_show_sign_in_ept" inherit_id="portal.portal_show_sign_in"-->
-<!--              name="Show Sign In">-->
-<!--        <xpath expr="//li[@groups='base.group_public']" position="replace">-->
-<!--        </xpath>-->
-<!--        <xpath expr="//li[@groups='base.group_public']" position="replace">-->
-<!--        </xpath>-->
-<!--    </template>-->
+    <template id="portal_show_sign_in_ept" inherit_id="portal.user_sign_in"
+              name="Show Sign In">
+        <xpath expr="//li[@groups='base.group_public']" position="replace">
+        </xpath>
+        <xpath expr="//li[@groups='base.group_public']" position="replace">
+        </xpath>
+    </template>
 
     <!-- Header Wishlist Option-->
     <template id="header_wishlist">
@@ -1778,19 +1778,19 @@
     </template>
 
     <!-- To Replace Default Cart In Navbar -->
-<!--    <template id="header_ept_cart" inherit_id="website_sale.header" name="Header Shop Cart Link">-->
-<!--        <xpath expr="//li[contains(@t-attf-class, 'o_wsale_my_cart')]" position="replace">-->
-<!--            <li t-attf-class="o_wsale_my_cart nav-item #{'' if website_sale_order and website_sale_order.cart_quantity else ' d-none'}">-->
-<!--            </li>-->
-<!--        </xpath>-->
-<!--    </template>-->
+    <template id="header_ept_cart" inherit_id="website_sale.header_cart_link" name="Header Shop Cart Link">
+        <xpath expr="//li[contains(@t-attf-class, 'o_wsale_my_cart')]" position="replace">
+            <li t-attf-class="o_wsale_my_cart nav-item #{'' if website_sale_order and website_sale_order.cart_quantity else ' d-none'}">
+            </li>
+        </xpath>
+    </template>
 
     <!-- To Repace Default Whishlist In Navbar -->
-<!--    <template id="header_ept_wishlist" inherit_id="website_sale_wishlist.header" name="Header Shop Wishlist Link">-->
-<!--        <xpath expr="//li[hasclass('o_wsale_my_wish')]" position="replace">-->
-<!--            <li class="nav-item o_wsale_my_wish"></li>-->
-<!--        </xpath>-->
-<!--    </template>-->
+    <template id="header_ept_wishlist" inherit_id="website_sale_wishlist.header_wishlist_link" name="Header Shop Wishlist Link">
+        <xpath expr="//li[hasclass('o_wsale_my_wish')]" position="replace">
+            <li class="nav-item o_wsale_my_wish"></li>
+        </xpath>
+    </template>
 
     <template id="login_popup_ept" name="Login Popup">
         <input type="hidden" class="login_popup_ept" value="True"/>

@@ -162,7 +162,7 @@ a.dropdown-item.js_change_lang,
     }
     button.btn.btn-primary.oe_search_button{
         background-color:nth($f_color,27);
-        color: theme-color('secondary');
+        color: black !important;
         box-shadow: none;
         font-size: nth($f_sizes,7);
         padding: 0rem 1rem;
@@ -415,6 +415,7 @@ header .js_language_selector .dropdown-menu.show {
             display: none;
             .input-group{
                 background: #ffffff;
+                color:black !important;
             }
         }
         &.active{

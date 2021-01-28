@@ -29,6 +29,7 @@ INDEX:
 		{
 			@include style(3,19);
 			margin-right:1rem;
+			color: black;
 		}
 	}
 	> .dropdown-menu a.dropdown-item:last-child
@@ -247,7 +248,7 @@ INDEX:
 	}
 	.fa
 	{
-		color:nth($f_color,19);
+		color:black;
 	}
 }
 div[name="mail_button"]
@@ -459,6 +460,7 @@ div[name="mail_button"]
 		line-height: 50px;
 		margin: 10px auto;
 		display: block;
+		color: black;
 		@include media-breakpoint-down(md)
 		{
 			width: 40px;

@@ -1,7 +1,7 @@
 /*================== Button Style 2 =====================*/
 .te_theme_button {
 	@include border(2px,19,solid);
-	color: nth($f_color,19);
+	color: black !important;
     display: inline-block;
     @include position(relative);
     @include transition(all,0.3s,null)
@@ -11,28 +11,28 @@
     
     &.btn-secondary,&.btn-link
     {
-		color: theme-color("secondary") !important;
-		background-color: nth($f_color,27) !important;
-		border-color:theme-color("secondary") !important;
+		color:  black !important;
+		background-color: white !important;
+		border-color: black !important;
 		border-width:2px !important;
 		&:after {
-			background-color:theme-color("secondary") !important;
+			background-color: white !important;
 		}
 		&:hover {
-			border-color:theme-color("secondary") !important;
-			color: nth($f_color,5) !important;
+			border-color: black !important;
+			color: black!important;
 		}
     }
     &.btn-danger
     {
-    	color: theme-color('danger');
-    	border-color: theme-color('danger');
+    	color: red;
+    	border-color: red;
     	&:after {
-			background-color:theme-color('danger');
+			background-color: red;
 		}
 		&:hover {
-			border-color:theme-color('danger');
-			color: nth($f_color,5);
+			border-color: red;
+			color: black;
 		}
     }
 

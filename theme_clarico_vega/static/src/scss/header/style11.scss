@@ -307,10 +307,10 @@ span#menu_label_tx_span span.te_custom_menu_label{
         a.te_search_link {
             .fa-search{
                 font-size:nth($f_sizes,8);
-                color:theme-color('secondary');
+                color:black;
             }
             & :hover{
-                color:nth($f_color,19);
+                color:black;
             }
         }
         .te_cart_icon_head .fa-shopping-cart,
@@ -318,6 +318,7 @@ span#menu_label_tx_span span.te_custom_menu_label{
         .te_bar_icon .fa-sliders,
         .te_header_account .fa-user-circle-o{
             font-size:nth($f_sizes,7);
+            color: black;
         }
         .dropdown.te_user_account .dropdown-menu,
         .dropdown.te_user_account.show .dropdown-menu.show {
@@ -395,6 +396,7 @@ span#menu_label_tx_span span.te_custom_menu_label{
         flex:auto;
     }
     .te_header_search_close.te_srch_close .fa-times {
+        color: black;
         cursor: pointer;
         margin: 0px 10px;
     }
@@ -608,7 +610,7 @@ search_animate{
 }
 .te_header_right_icon .te_language_selector button.btn.btn-sm.btn-secondary.dropdown-toggle,
 .te_header_right_icon .te_price_lang_right .te_pricelist .dropdown-toggle{
-    color:theme-color("secondary") !important;
+    color: black !important;
     font-size:nth($f_sizes,2) !important;
     background-color:transparent;
 }

@@ -3,25 +3,25 @@
 {
     @include position(relative);
     background:nth($f_color,19);
-    color:nth($f_color,5);
+    color: black !important;
     transform: translate3d(0px, 0%, 0px);
     transition-delay: 0.6s;
     overflow: hidden;
 
     &.btn-secondary, &.btn-link
     {
-        background:theme-color('secondary') !important;
+        background: white !important;
         border: none !important;
-        color:nth($f_color,5) !important;
+        color: black !important;
         &:after {
-            background:theme-color('secondary') !important;
+            background: white !important;
         }
     }
     &.btn-danger
     {
-        background: theme-color('danger');
+        background: red;
         &:after {
-            background:theme-color('danger') !important;
+            background: red !important;
         }
     }
 

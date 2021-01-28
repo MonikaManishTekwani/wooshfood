@@ -7,7 +7,7 @@
     'version': '1.5.3',
     'license': 'OPL-1',
     'depends': [
-        # 'website_theme_install',
+       # 'website_theme_install',
         'website_sale_wishlist',
         'emipro_theme_product_carousel',
         'emipro_theme_category_carousel',

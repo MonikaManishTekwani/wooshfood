@@ -258,7 +258,7 @@
 		.btn:not(:disabled):not(.disabled){
 			margin:5px 5px;
 			width:100%;
-			color: grey !important;
+			color: black !important;
 		}
 	}
 }
@@ -296,7 +296,7 @@
 	{
 		@include style(19,22);
 		&:hover {
-			color:nth($f_color,19);
+			color: black;
 		}
 	}
 }
@@ -1183,7 +1183,7 @@
 		{
 			border: 1px solid #ced4da;  /*This color is not used in variables*/
 		    background-color: nth($f_color,5);
-			color:nth($f_color,13);
+			color: black !important;
 			z-index: 0;
 		}
 	}
@@ -1198,7 +1198,7 @@
             {
                 border: 1px solid #ced4da;  /*This color is not used in variables*/
                 background-color: nth($f_color,5);
-                color:nth($f_color,13);
+                color: black !important;
                 z-index: 0;
             }
         }
@@ -1602,7 +1602,7 @@ button:focus {
         padding: 10px !important;
         .fa {
             font-size: 2rem;
-            color: nth($f_color,20);
+            color: black;
         }
     }
     button.owl-next {
@@ -1611,7 +1611,7 @@ button:focus {
         padding: 10px !important;
         .fa {
             font-size: 2rem;
-            color: nth($f_color,20);
+            color: black;
         }
     }
     .owl-carousel .owl-item img {
@@ -1653,7 +1653,7 @@ button:focus {
             padding: 8px !important;
             .fa {
                 font-size: 1.2rem;
-                color: nth($f_color,20);
+                color: black;
             }
         }
         .owl-prev {
@@ -1662,7 +1662,7 @@ button:focus {
             padding: 8px !important;
             .fa {
                 font-size: 1.2rem;
-                color: nth($f_color,20);
+                color: black;
             }
         }
         .owl-dots {

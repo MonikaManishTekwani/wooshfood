@@ -448,7 +448,7 @@
         color:nth($f_color,5);
     }
     > div.te_header_account a.btn-link{
-        color:nth($f_color,5);
+        color:black;
     }
 }
 .navbar-light .navbar-nav .show > .nav-link,
@@ -595,7 +595,7 @@ body.fixed-header{
     .te_header_before_left {
         > div a,
         > div .btn-link{
-            color: nth($f_color,5);
+            color: black;
         }
     }
     .row.align-items-center

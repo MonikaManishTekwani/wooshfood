@@ -93,6 +93,7 @@
             .fa
             {
                 font-size:nth($f_sizes,12);
+                color: black;
             }
             @include media-breakpoint-down(sm)
             {
@@ -139,7 +140,7 @@
 {
 	.oe_price_h4 .oe_default_price
 	{
-		color:nth($f_color,9) !important;
+		color:black !important;
 	}
 }
 select#slider_category_option option {

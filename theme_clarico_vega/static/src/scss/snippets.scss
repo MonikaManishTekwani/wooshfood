@@ -1058,7 +1058,7 @@
 	{
 		.fa
 		{
-			background-color: nth($f_color,8);
+			background-color: white;
 			height: 70px;
 			width: 70px;
 			@include border-radius(50%);
@@ -1072,7 +1072,7 @@
 		.te_icon_border .fa
 		{
 			transform: translateY(-10px);
-			background:nth($f_color,11);
+			background:black;
 		}
 	}	
 }

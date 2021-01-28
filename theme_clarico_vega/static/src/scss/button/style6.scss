@@ -1,6 +1,6 @@
 /*======================= Button Style 6 ==========================*/
 .te_theme_button {
-	color: nth($f_color,19);
+	color: black !important;
     display: inline-block;
     @include position(relative);
     @include transition(background-color,0.3s,null);
@@ -11,7 +11,7 @@
 
     &.btn-secondary, &.btn-link
     {
-		color: theme-color("secondary") !important;
+		color: black !important;
 		background-color:nth($f_color,27) !important;
 		border-width: 2px !important;
 		border-color: nth($f_color,27) !important;

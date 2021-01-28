@@ -432,6 +432,7 @@
 		.te_theme_button
 		{
 			display:none;
+			black !important
 		}
 	}
 }
@@ -512,7 +513,7 @@
 				max-width: 90%;
 
 				a:not(.btn) {
-					color: unset;
+					color: black;
 				}
 				.s_latest_posts_post_title
 				{
@@ -552,6 +553,7 @@
 			font-size: unset;
 			line-height: unset;
 			margin-top: 0 !important;
+			color: black !important;
 		}
 		.te_tag_list
 		{
@@ -744,6 +746,7 @@
 			line-height: unset;
 			font-size: unset;
 			box-shadow: unset !important;
+			color: black !important;
 			&:after
 			{
 				content:unset

@@ -3,7 +3,7 @@
 .te_theme_button {
     position: relative;
     vertical-align: middle;
-    color: nth($f_color,19);
+    color: black !important;
     display: inline-block;
     transition: 0.5s;
     @include border(2px,19,solid)
@@ -13,10 +13,10 @@
     &.btn-secondary, &.btn-link
     {
     	background-color:nth($f_color,27) !important;
-		color: theme-color("secondary") !important;
+		color: black !important;
 		border-color:theme-color("secondary") !important;
 		&:hover {
-			color: nth($f_color,5) !important;
+			color: black !important;
 			background-color:theme-color("secondary") !important;
 		}
     }
