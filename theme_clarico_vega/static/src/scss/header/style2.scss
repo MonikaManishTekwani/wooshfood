@@ -70,7 +70,7 @@
         form.o_wsale_products_searchbar_form{
             .dropdown-menu.show{
                 & button.dropdown-item:active{
-                    color: black !important;
+                    color: nth($f_color, 5) !important;
                 }
             }
         }
@@ -213,11 +213,11 @@
 {
 	.btn-link,a.dropdown-toggle,.te_signin > a
 	{
-		color: black;
+		color:nth($f_color,5);
 	}
 	.js_language_selector button.btn.btn-sm.btn-secondary.dropdown-toggle
 	{
-	    color: black;
+	    color:nth($f_color,5);
 	    padding: 13px 5px;
 	}
 	> div.text-right > div
@@ -351,7 +351,7 @@
       & button.oe_search_button
       {
         @include position(absolute,auto,0px,auto,auto);
-        color:grey !important;
+        color:nth($f_color,3);
         background-color:nth($f_color,27);
         z-index: 9;
       }

@@ -437,8 +437,7 @@ h2
 			&:before
 			{
 				@include position(absolute,30px,30px,30px,30px);
-				//changes
-				background-color: rgba(0, 0, 0,0.3);
+				background-color: rgba(nth($f_color,3),0.3);
 			}
 		}
 	}
@@ -458,15 +457,13 @@ h2
 		{
 			&:after
 			{
-			//changes
-				background-color:rgba(0, 0, 0, 0.15);
+				background-color:rgba(nth($f_color,5),0.2);
 				top: 50%;
 				bottom: 50%;
 			}
 			&:before
 			{
-			    //changes
-				background-color:rgba(0, 0, 0, 0.15);
+				background-color:rgba(nth($f_color,5),0.2);
 				right: 50%;
 				left: 50%;
 			}
@@ -483,8 +480,7 @@ h2
 			opacity: 0;
 			transform: scale(0.6);
 			transition: transform .35s cubic-bezier(.05,.2,.1,1),opacity .35s cubic-bezier(.05,.2,.1,1);
-			//changes
-			border: 5px solid rgba(0, 0, 0, 0.15);
+			border: 5px solid rgba(nth($f_color,5),0.3);
 		}
 		&:hover
 		{

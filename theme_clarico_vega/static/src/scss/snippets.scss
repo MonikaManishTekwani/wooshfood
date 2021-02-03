@@ -1058,7 +1058,7 @@
 	{
 		.fa
 		{
-			background-color: white;
+			background-color: nth($f_color,8);
 			height: 70px;
 			width: 70px;
 			@include border-radius(50%);
@@ -1072,7 +1072,7 @@
 		.te_icon_border .fa
 		{
 			transform: translateY(-10px);
-			background:black;
+			background:nth($f_color,11);
 		}
 	}	
 }
@@ -1923,15 +1923,13 @@
 	{
 		>div:after
 		{
-		    //changes
-			background-color:rgba(0, 0, 0, 0.15);
+			background-color:rgba(nth($f_color,5),0.2);
 			top: 50%;
 			bottom: 50%;
 		}
 		>div:before
 		{
-		    //changes
-			background-color:rgba(0, 0, 0, 0.15);
+			background-color:rgba(nth($f_color,5),0.2);
 			right: 50%;
 			left: 50%;
 		}
@@ -2086,8 +2084,7 @@
 	    content: "";
 	    @include position(absolute,0,0,0,0);
 	    z-index: -1;
-	    //changes
-	    background: rgba(0, 0, 0, 0.15);
+	    background: rgba(nth($f_color,3),0.3);
 	    transform: scaleY(0);
 	    transform-origin: center bottom;
 	    @include transition(transform,0.3s,ease-out);
@@ -2536,8 +2533,7 @@
 		@include position(relative);
 		&:before{
 			content:'';
-			//changes
-			background-color: rgba(0, 0, 0 ,0.5);
+			background-color: rgba(nth($f_color,5),0.5);
 			@include position(absolute,0,0,0,0);
 			width: 0;
 			@include animation(0.5s, 2.9s,bgLeft,null,null);
@@ -2563,7 +2559,7 @@
 		}
 		&:before{
 			content:'';
-// 			background-color: rgba(nth($f_color,5),0.5);
+			background-color: rgba(nth($f_color,5),0.5);
 			@include position(absolute,0,0,0,0);
 			width: 100%;
 			opacity: 0;
@@ -2771,7 +2767,7 @@
 		}
 		li:hover:not(.active)
 		{
-// 			background-color: rgba(nth($f_color,3),0.8);;
+			background-color: rgba(nth($f_color,3),0.8);;
 		}
 		.active
 		{
@@ -3240,7 +3236,7 @@
 	@include position(relative);
     &::before {
         content: '';
-//         background: rgba(nth($f_color,19),0.4);
+        background: rgba(nth($f_color,19),0.4);
         width: 5px;
         height: 95%;
         @include position(absolute,null,null,null,50%);
@@ -3415,7 +3411,7 @@
     }
 }
 .te_timeline_date {
-//     background: rgba(nth($f_color,19),0.8);
+    background: rgba(nth($f_color,19),0.8);
     display: inline-block;
     color: nth($f_color,5);
     padding: 10px;

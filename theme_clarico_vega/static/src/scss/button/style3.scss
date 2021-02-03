@@ -9,14 +9,14 @@
 	box-sizing: border-box;
     box-shadow: 0 15px 40px -10px rgba(0, 0, 0, 0.3);
     background: unset;
-    color: black !important;
+    color: nth($f_color,19);
     @include position(relative);
     padding: 0.675rem 1.8rem;
     
     &.btn-secondary, &.btn-link
     {
 		color: theme-color("secondary") !important;
-		background-color:black!important;
+		background-color: nth($f_color,27) !important;
 		border-color:theme-color("secondary") !important;
 		border: 0 !important;
 		&:after, &:before {
@@ -66,5 +66,4 @@
 }
 .te_theme_button:hover::before, .te_theme_button:hover::after {
     width: 51%;
-    color: black;
 }

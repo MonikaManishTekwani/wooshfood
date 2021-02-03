@@ -126,7 +126,6 @@ header .navbar-brand, header .te_header_navbar_10 .navbar-brand.logo {
 a.dropdown-item.js_change_lang,
 .h10_pricelist .dropdown-menu a.dropdown-item{
     font-size: nth($f_sizes, 3);
-    color: black !important;
 }
 .te_header_10_search.te_header_search input.search-query.form-control.oe_search_box {
     background-color:nth($f_color,5);
@@ -162,7 +161,7 @@ a.dropdown-item.js_change_lang,
     }
     button.btn.btn-primary.oe_search_button{
         background-color:nth($f_color,27);
-        color: black !important;
+        color: theme-color('secondary');
         box-shadow: none;
         font-size: nth($f_sizes,7);
         padding: 0rem 1rem;
@@ -312,8 +311,7 @@ a.dropdown-item.js_change_lang,
     }
 }
 .te_header_navbar #top_menu_collapse #top_menu > li > a.nav-link.active {
-//     color: nth($f_color, 19);
-       color: grey !important;
+    color: nth($f_color, 19);
 }
 @include media-breakpoint-down(sm){
     .te_header_icon_right .te_cart_icon_head {
@@ -415,7 +413,6 @@ header .js_language_selector .dropdown-menu.show {
             display: none;
             .input-group{
                 background: #ffffff;
-                color:black !important;
             }
         }
         &.active{
@@ -713,8 +710,7 @@ header .js_language_selector .dropdown-menu.show {
     }
 }
 .te_header_navbar #top_menu_collapse #top_menu > li > a.nav-link{
-//     color:nth($f_color,3);
-        color: grey !important;
+    color:nth($f_color,3);
 }
 .te_header_navbar_10 #top_menu_collapse #top_menu > li.active_item > a.nav-link:before {
     opacity: 1;
@@ -738,7 +734,6 @@ header .js_language_selector .dropdown-menu.show {
     -moz-transform: scaleX(0);
     -ms-transform: scaleX(0);
     -o-transform: scaleX(0);
-    color: grey !important;
 }
 @include media-breakpoint-up(md){
     .te_header_navbar_10.start-sticky #top_menu_collapse #top_menu > li > a.nav-link:before{
@@ -746,7 +741,7 @@ header .js_language_selector .dropdown-menu.show {
     }
 }
 .te_sub_search button.dropdown-item.text-center.text-primary:active {
-    color: black !important;
+    color:nth($f_color,5) !important;
 }
 button.navbar-toggler:not(.te_navbar-toggler) {
     display: none;

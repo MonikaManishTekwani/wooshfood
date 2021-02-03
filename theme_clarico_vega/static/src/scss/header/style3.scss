@@ -59,6 +59,7 @@
 	{
 		border-right:1px solid nth($f_color,11);
         .te_signin {
+            color: black !important;
             padding-left: 5px;
             @include media-breakpoint-down(xs){
                 padding-left:0px;
@@ -334,12 +335,12 @@
 	        .btn-primary:not(:disabled):not(.disabled).active,
 	        .show > .btn-primary.dropdown-toggle
 	        {
-	            color:  black;
-                background-color: transparent;
+	            color: nth($f_color,3);
+                background-color: nth($f_color,5);
 	        }
 	        button.btn.btn-primary.oe_search_button
 	        {
-	            color: grey !important;
+	            color: nth($f_color,3);
 	        }
 	    }
 	}

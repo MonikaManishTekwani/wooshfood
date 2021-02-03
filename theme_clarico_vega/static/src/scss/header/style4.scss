@@ -118,7 +118,6 @@
             &:hover{
                 .dropdown-item{
                    left:unset;
-                   color: black !important;
                 }
             }
             &:before, &:after{
@@ -293,7 +292,7 @@
         form.o_wsale_products_searchbar_form{
             .dropdown-menu.show{
                 & button.dropdown-item:active{
-                    color: black !important;
+                    color: nth($f_color, 5) !important;
                 }
             }
         }
@@ -426,7 +425,7 @@
         button.btn.btn-primary.oe_search_button
         {
             background-color: transparent;
-            color: grey !important;
+            color: nth($f_color,4);
             border-radius: 25px !important;
             border-color:transparent;
         }

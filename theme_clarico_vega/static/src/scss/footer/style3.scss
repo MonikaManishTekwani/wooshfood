@@ -2,7 +2,7 @@
 /*----------- Company Logo -------------*/
 .te_footer_logo_title_socialicon
 {
-// 	background: darken(color('footer'), 5%);
+	background: darken(color('footer'), 5%);
 	>h5 span
 	{
         padding: 0 0.3125rem;
@@ -15,7 +15,7 @@
 	{
         .btn-secondary
         {
-                background-color: grey !important;
+                background-color: nth($f_color,27);
                 font-size:nth($f_sizes,2);
                 color: inherit;
         }
@@ -24,7 +24,7 @@
             font-size:nth($f_sizes,2);
             color: inherit;
             &:hover{
-                color: grey !important;
+                color:nth($f_color,19);
             }
         }
 	}

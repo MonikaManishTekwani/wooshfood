@@ -1,7 +1,7 @@
 /*========================== Button Style 10 ========================*/
 .te_theme_button {
     @include border(2px,27,solid);
-    color: black !important;
+    color: nth($f_color,05);
     @include border-radius(5px);
     display: inline-block;
     @include transition(all,300ms,null);
@@ -12,27 +12,27 @@
     
     &.btn-secondary, &.btn-link
     {
-    	color: black !important;
-		background-color: white !important;
+    	color: nth($f_color,5) !important;
+		background-color: theme-color("secondary") !important;
 		&:before{
-			border-color:black !important;
+			border-color:theme-color("secondary") !important;
 		}
 		&:hover {
-			color: black !important;
-			background: white !important;
-	        color: black !important;
-	        border-color: black !important;
+			color: grey !important;
+			background: nth($f_color,27) !important;
+	        color: nth($f_color,19) !important;
+	        border-color: nth($f_color,27) !important;
 	        border-width: 2px !important;
 		}
     }
     &.btn-danger
     {
-    	background-color: red;
+    	background-color: theme-color('danger');
     	&:before{
-			border-color:red;
+			border-color:theme-color('danger');
 		} 
 		&:hover {
-			color: red;
+			color: theme-color('danger');
 		}
 	}
 		
@@ -73,7 +73,7 @@
 		padding: 0.5rem 1.8rem;
 		margin-bottom: 8px;
 		font-size:nth($f_sizes,3);
-        color: black !important;
+
 		&:after
 		{
 			font-size: 0.6rem; /*This font size is not used in variables*/

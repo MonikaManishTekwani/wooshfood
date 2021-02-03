@@ -154,12 +154,12 @@
             <input type="hidden" name="redirect" t-att-value="redirect"/>
             <input type="hidden" name="token" t-att-value="token"/>
             <div class="clearfix oe_login_buttons">
-                <div class="d-flex justify-content-between align-items-center small">
-                    <button type="submit" class="btn btn-primary te_theme_button">Confirm</button>
-                    <a class="back_login" t-if="not token" href="#loginPopup">Back to Login</a>
-                    <a class="back_login" t-if="invalid_token" href="#loginPopup">Back to Login</a>
+                <div class="d-flex justify-content-between align-items-center small" style="color:black;">
+                    <button type="submit"  style="color:black;" class="btn btn-primary te_theme_button">Confirm</button>
+                    <a class="back_login"  style="color:black;" t-if="not token" href="#loginPopup">Back to Login</a>
+                    <a class="back_login"  style="color:black;" t-if="invalid_token" href="#loginPopup">Back to Login</a>
                 </div>
-                <div class="o_login_auth"/>
+                <div class="o_login_auth"  style="color:black;"/>
             </div>
         </form>
     </template>

@@ -1,6 +1,6 @@
 /*============================ Button Style 7 ===============================*/
 .te_theme_button {
-	color: black !important;
+	color: nth($f_color,05);
     display: inline-block;
     @include position(relative)
     @include transition(all,0.3s,null)
@@ -14,11 +14,11 @@
     
     &.btn-secondary, &.btn-link
     {
-// 		background-image: linear-gradient(75deg, darken(theme-color('secondary'), 15%), theme-color("secondary"), theme-color("secondary"), darken(theme-color('secondary'), 15%));
+		background-image: linear-gradient(75deg, darken(theme-color('secondary'), 15%), theme-color("secondary"), theme-color("secondary"), darken(theme-color('secondary'), 15%));
     }
     &.btn-danger
     {
-//     	background-image: linear-gradient(75deg, darken(theme-color('danger'), 15%), theme-color('danger'), theme-color('danger'), darken(theme-color('danger'), 15%));
+    	background-image: linear-gradient(75deg, darken(theme-color('danger'), 15%), theme-color('danger'), theme-color('danger'), darken(theme-color('danger'), 15%));
     }
 
     @include media-breakpoint-down(xs) {

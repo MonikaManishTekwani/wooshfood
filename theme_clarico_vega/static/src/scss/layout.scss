@@ -29,7 +29,6 @@ INDEX:
 		{
 			@include style(3,19);
 			margin-right:1rem;
-			color: black;
 		}
 	}
 	> .dropdown-menu a.dropdown-item:last-child
@@ -146,6 +145,7 @@ INDEX:
 /*=========================== 03 - Login Style ==================================*/
 .oe_login_form, .oe_signup_form, .oe_reset_password_form
 {
+    color: black !important;
 	max-width: 400px;
 	padding: 32px;
 	@include box-shadow(0px 0px 10px 0 rgba(50, 50, 93, 0.1))
@@ -248,7 +248,7 @@ INDEX:
 	}
 	.fa
 	{
-		color:black;
+		color:nth($f_color,19);
 	}
 }
 div[name="mail_button"]
@@ -262,8 +262,7 @@ div[name="mail_button"]
 }
 .te_add_flip_back
 {
-    //changes
-	background-color:rgba(0, 0, 0, 0.7);
+	background-color:rgba(nth($f_color,19),0.7);
 	color:nth($f_color,5);
 	transform: rotateY(-180deg);
 	transition: transform .4s cubic-bezier(.2,.85,.4,1.275);
@@ -460,7 +459,6 @@ div[name="mail_button"]
 		line-height: 50px;
 		margin: 10px auto;
 		display: block;
-		color: black;
 		@include media-breakpoint-down(md)
 		{
 			width: 40px;

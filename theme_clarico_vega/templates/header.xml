@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <!-- ======================= Header style option 1========================= -->
-
-    <template id="option_header_brand_logo_new" inherit_id="website.placeholder_header_brand" name="Header Brand Logo" active="True">
-    <xpath expr="//a[contains(@t-attf-class, 'navbar-brand logo #{_link_class}')]" position="replace">>
-            <span/>
-      <a href="/" t-attf-class="navbar-brand logo #{_link_class}">
-            <span t-field="website.logo" t-options="{'widget': 'image'}" role="img" t-att-aria-label="'Logo of %s' % website.name" t-att-title="website.name"/>
-        </a>
-
-    </xpath>
-    </template>
     <template id="customize_header_style_1" inherit_id="portal.frontend_layout"
               name="Header style 1">
         <!-- vertical menu -->
@@ -28,10 +18,8 @@
                 </t>
             </div>
         </xpath>
-        <xpath expr="//div[@id='top_menu_container']" position="replace">
-        </xpath>
-        <xpath expr="//header//nav" position="before">
-            <div class="te_header_before_overlay body">
+        <xpath expr="//header" position="before">
+            <div class="te_header_before_overlay">
                 <div class="container">
                     <section class="te_header_offer_top">
                         <p></p>
@@ -54,17 +42,16 @@
                             </div>
 
                         </div>
-
-                        <t t-set="logo_show" t-value="request.website.viewref('website.option_header_brand_logo').active"/>
+                        <t t-set="logo_show" t-value="request.website.viewref('website.option_header_off_canvas_logo_show').active"/>
                         <t t-if="logo_show">
-                            <a href="/" class="navbar-brand logo te_header_before_logo" style="color:grey;">
+                            <a href="/" class="navbar-brand logo te_header_before_logo">
                                 <span t-field="website.logo" t-options="{'widget': 'image'}" role="img"
                                       t-att-aria-label="'Logo of %s' % website.name" t-att-title="website.name"/>
                             </a>
                         </t>
                         <t t-else="">
                             <a class="te_header_before_logo navbar-brand" href="/" t-if="website"
-                               t-field="website.name" style="color:grey;">My Website
+                               t-field="website.name">My Website
                             </a>
                         </t>
                         <div class="col-lg-4 te_header_1_right">
@@ -77,7 +64,7 @@
                             </div>
                             <div class="te_header_search">
                                 <div class="te_srch_icon_header">
-                                    <a href="javascript:void(0);" class="">
+                                    <a href="#" class="">
                                         <i class="fa fa-search te_srch_icon"/>
                                         <i class="fa fa-times te_srch_close"/>
                                     </a>
@@ -100,26 +87,24 @@
                                         <i class="fa fa-user-circle" aria-hidden="true"></i>
                                     </span>
                                 </a>
-                                <div class="dropdown-menu dropdown-menu-right" role="menu">
+                                <div class="dropdown-menu dropdown-menu-right js_usermenu" role="menu">
                                     <a role="menuitem" class="dropdown-item te_user_name">
-                                        <span class="te_user_drop_item">Hello,
-                                            <span class="te_user_drop_item"
-                                                  t-esc="user_id.name[:15] + '...' if user_id.name and len(user_id.name) &gt; 16 else user_id.name"/>
-                                        </span>
+                                        <span class="te_user_drop_item">Hello, <span class="te_user_drop_item" t-esc="user_id.name[:15] + '...' if user_id.name and len(user_id.name) &gt; 16 else user_id.name"/></span>
                                     </a>
                                     <a href="/my/home" role="menuitem" class="dropdown-item">
-                                        <span class="fa fa-user"/>
-                                        <span class="te_user_drop_item">My Account</span>
+                                        <span class="fa fa-user"/><span class="te_user_drop_item">My Account</span>
                                     </a>
-                                    <a href="/my/orders" role="menuitem" class="dropdown-item">
-                                        <span
-                                                class="fa fa-pie-chart"/>
-                                        <span class="te_user_drop_item">My orders</span>
+<!--                                    <t t-if="website.env.user.sudo().partner_id.seller">-->
+<!--                                        <a href="/my/marketplace" class="dropdown-item" role="menuitem" -->
+<!--                                            groups="odoo_marketplace.marketplace_draft_seller_group">-->
+<!--                                            <span class="fa fa-cog"/><span class="te_user_drop_item">Marketplace</span>-->
+<!--                                        </a>-->
+<!--                                    </t>-->
+                                    <a href="/my/orders" role="menuitem" class="dropdown-item"><span
+                                            class="fa fa-pie-chart"/><span class="te_user_drop_item">My orders</span>
                                     </a>
                                     <a id="o_logout" class="dropdown-item" t-attf-href="/web/session/logout?redirect=/"
-                                       role="menuitem">
-                                        <span class="fa fa-sign-out"/>
-                                        <span class="te_user_drop_item">Logout</span>
+                                       role="menuitem"><span class="fa fa-sign-out"/><span class="te_user_drop_item">Logout</span>
                                     </a>
                                 </div>
                             </div>
@@ -142,14 +127,14 @@
                 </div>
             </div>
         </xpath>
-<!--        <xpath expr="//header///nav" position="attributes">-->
-<!--            <attribute name="class">navbar navbar-expand-md te_header_navbar navbar-light-->
-<!--            </attribute>-->
-<!--        </xpath>-->
-<!--        <xpath expr="//ul[@id='top_menu']/li[hasclass('divider')][last()]"-->
+        <xpath expr="//nav[hasclass('navbar-expand-lg')]" position="attributes">
+            <attribute name="class">navbar navbar-expand-lg te_header_navbar navbar-light
+            </attribute>
+        </xpath>
+<!--        <xpath expr="//ul[@id='top_menu']/t[1]"-->
 <!--               position="replace">-->
 <!--        </xpath>-->
-<!--        <xpath expr="//ul[@id='top_menu']/li[hasclass('dropdown')]"-->
+<!--        <xpath expr="//ul[@id='top_menu']/t[2]"-->
 <!--               position="replace">-->
 <!--        </xpath>-->
 <!--        <xpath expr="//li[contains(@t-attf-class, 'o_wsale_my_cart')]" position="replace">-->
@@ -174,7 +159,7 @@
             </div>
         </xpath>
         <xpath expr="//header" position="before">
-            <div class="te_header_before_overlay" t-att-style="color:black;">
+            <div class="te_header_before_overlay">
                 <div class="te_header_style_2_main">
                     <div class="te_ftr_before_bg">
                         <div class="container">
@@ -200,7 +185,7 @@
                                             </div>
                                         </div>
                                         <div class="px-2">
-                                            <div class="dropdown te_user_account"  t-ignore="true"
+                                            <div class="dropdown te_user_account" t-ignore="true"
                                                  t-if="not user_id._is_public()">
                                                 <a href="#" class="dropdown-toggle btn btn-link"
                                                    data-toggle="dropdown">
@@ -212,31 +197,28 @@
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right js_usermenu" role="menu">
                                                     <a role="menuitem" class="dropdown-item te_user_name">
-                                                        <span class="te_user_drop_item">Hello,
-                                                            <span class="te_user_drop_item"
-                                                                  t-esc="user_id.name[:15] + '...' if user_id.name and len(user_id.name) &gt; 16 else user_id.name"/>
-                                                        </span>
+                                                        <span class="te_user_drop_item">Hello, <span class="te_user_drop_item" t-esc="user_id.name[:15] + '...' if user_id.name and len(user_id.name) &gt; 16 else user_id.name"/></span>
                                                     </a>
-                                                    <a href="/my/home" role="menuitem" class="dropdown-item">
-                                                        <span
-                                                                class="fa fa-user"/>
-                                                        <span class="te_user_drop_item">My Account</span>
+                                                    <a href="/my/home" role="menuitem" class="dropdown-item"><span
+                                                            class="fa fa-user"/><span class="te_user_drop_item">My Account</span>
                                                     </a>
-                                                    <a href="/my/orders" role="menuitem" class="dropdown-item">
-                                                        <span
-                                                                class="fa fa-pie-chart"/>
-                                                        <span class="te_user_drop_item">My orders</span>
+<!--                                                    <t t-if="website.env.user.sudo().partner_id.seller">-->
+<!--                                                        <a href="/my/marketplace" class="dropdown-item" role="menuitem" -->
+<!--                                                         groups="odoo_marketplace.marketplace_draft_seller_group">-->
+<!--                                                            <span class="fa fa-cog"/><span class="te_user_drop_item">Marketplace</span>-->
+<!--                                                        </a>-->
+<!--                                                    </t>-->
+                                                    <a href="/my/orders" role="menuitem" class="dropdown-item"><span
+                                                            class="fa fa-pie-chart"/><span class="te_user_drop_item">My orders</span>
                                                     </a>
                                                     <a id="o_logout" class="dropdown-item"
                                                        t-attf-href="/web/session/logout?redirect=/"
-                                                       role="menuitem">
-                                                        <span class="fa fa-sign-out"/>
-                                                        <span class="te_user_drop_item">Logout</span>
+                                                       role="menuitem"><span class="fa fa-sign-out"/><span class="te_user_drop_item">Logout</span>
                                                     </a>
                                                 </div>
                                             </div>
                                             <div groups="base.group_public" class="te_signin"
-                                                 t-if="request.website.viewref('portal.user_sign_in').active">
+                                                 t-if="request.website.viewref('portal.placeholder_user_sign_in').active">
                                                 <t t-if="request.website.viewref('theme_clarico_vega.login_popup_ept').active">
                                                     <a href="#loginPopup" class="btn btn-link">
                                                         <span class="te_user_account_name">Sign in</span>
@@ -265,7 +247,7 @@
                         <div class="row py-3 align-items-center">
                             <div class="col-lg-6">
                                 <t t-set="logo_show"
-                                   t-value="request.website.viewref('website.option_header_off_canvas').active"/>
+                                   t-value="request.website.viewref('website.option_header_off_canvas_logo_show').active"/>
                                 <t t-if="logo_show">
                                     <a href="/" class="navbar-brand logo te_header_before_logo">
                                         <span t-field="website.logo" t-options="{'widget': 'image'}" role="img"
@@ -311,18 +293,18 @@
                 </div>
             </div>
         </xpath>
-        <xpath expr="//nav[hasclass('navbar-expand-md')]" position="attributes">
-            <attribute name="class">navbar navbar-expand-md te_header_navbar navbar-light
+        <xpath expr="//nav[hasclass('navbar-expand-lg')]" position="attributes">
+            <attribute name="class">navbar navbar-expand-lg te_header_navbar navbar-light
             </attribute>
         </xpath>
-        <xpath expr="//ul[@id='top_menu']/li[hasclass('divider')][last()]"
-               position="replace">
-        </xpath>
-        <xpath expr="//ul[@id='top_menu']/li[hasclass('dropdown')]"
-               position="replace">
-        </xpath>
-        <xpath expr="//li[contains(@t-attf-class, 'o_wsale_my_cart')]" position="replace">
-        </xpath>
+<!--        <xpath expr="//ul[@id='top_menu']/t[1]"-->
+<!--               position="replace">-->
+<!--        </xpath>-->
+<!--        <xpath expr="//ul[@id='top_menu']/t[2]"-->
+<!--               position="replace">-->
+<!--        </xpath>-->
+<!--        <xpath expr="//li[contains(@t-attf-class, 'o_wsale_my_cart')]" position="replace">-->
+<!--        </xpath>-->
 
     </template>
     <!-- ======================= Header style option 3========================= -->
@@ -369,7 +351,7 @@
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-2">
-                            <t t-set="logo_show" t-value="request.website.viewref('website.option_header_off_canvas').active"/>
+                            <t t-set="logo_show" t-value="request.website.viewref('website.option_header_off_canvas_logo_show').active"/>
                             <t t-if="logo_show">
                                 <a href="/" class="navbar-brand logo te_header_before_logo">
                                     <span t-field="website.logo" t-options="{'widget': 'image'}" role="img"
@@ -411,31 +393,28 @@
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right js_usermenu" role="menu">
                                         <a role="menuitem" class="dropdown-item te_user_name">
-                                            <span class="te_user_drop_item">Hello,
-                                                <span class="te_user_drop_item"
-                                                      t-esc="user_id.name[:15] + '...' if user_id.name and len(user_id.name) &gt; 16 else user_id.name"/>
-                                            </span>
+                                            <span class="te_user_drop_item">Hello, <span class="te_user_drop_item" t-esc="user_id.name[:15] + '...' if user_id.name and len(user_id.name) &gt; 16 else user_id.name"/></span>
                                         </a>
-                                        <a href="/my/home" role="menuitem" class="dropdown-item">
-                                            <span
-                                                    class="fa fa-user"/>
-                                            <span class="te_user_drop_item">My Account</span>
+                                        <a href="/my/home" role="menuitem" class="dropdown-item"><span
+                                                class="fa fa-user"/><span class="te_user_drop_item">My Account</span>
                                         </a>
-                                        <a href="/my/orders" role="menuitem" class="dropdown-item">
-                                            <span
-                                                    class="fa fa-pie-chart"/>
-                                            <span class="te_user_drop_item">My orders</span>
+<!--                                        <t t-if="website.env.user.sudo().partner_id.seller">-->
+<!--	                                        <a href="/my/marketplace" class="dropdown-item" role="menuitem" -->
+<!--	                                            groups="odoo_marketplace.marketplace_draft_seller_group">-->
+<!--	                                            <span class="fa fa-cog"/><span class="te_user_drop_item">Marketplace</span>-->
+<!--	                                        </a>-->
+<!--	                                    </t>-->
+                                        <a href="/my/orders" role="menuitem" class="dropdown-item"><span
+                                                class="fa fa-pie-chart"/><span class="te_user_drop_item">My orders</span>
                                         </a>
                                         <a id="o_logout" class="dropdown-item"
                                            t-attf-href="/web/session/logout?redirect=/"
-                                           role="menuitem">
-                                            <span class="fa fa-sign-out"/>
-                                            <span class="te_user_drop_item">Logout</span>
+                                           role="menuitem"><span class="fa fa-sign-out"/><span class="te_user_drop_item">Logout</span>
                                         </a>
                                     </div>
                                 </div>
                                 <div groups="base.group_public" class="te_signin"
-                                     t-if="request.website.viewref('portal.user_sign_in').active">
+                                     t-if="request.website.viewref('portal.placeholder_user_sign_in').active">
                                     <t t-if="request.website.viewref('theme_clarico_vega.login_popup_ept').active">
                                         <a href="#loginPopup" class="btn btn-link">
                                             <span class="te_user_account_name">Sign in</span>
@@ -460,36 +439,32 @@
                 </div>
             </div>
         </xpath>
-        <xpath expr="//nav[hasclass('navbar-expand-md')]" position="attributes">
-            <attribute name="class">navbar navbar-expand-md te_header_navbar navbar-light
+        <xpath expr="//nav[hasclass('navbar-expand-lg')]" position="attributes">
+            <attribute name="class">navbar navbar-expand-lg te_header_navbar navbar-light
             </attribute>
         </xpath>
-        <xpath expr="//ul[@id='top_menu']/li[hasclass('divider')][last()]"
-               position="replace">
+<!--        <xpath expr="//ul[@id='top_menu']/t[1]"-->
+<!--               position="replace">-->
+<!--        </xpath>-->
+<!--        <xpath expr="//ul[@id='top_menu']/t[2]"-->
+<!--               position="replace">-->
+<!--        </xpath>-->
+        <xpath expr="//li[contains(@t-attf-class, 'o_wsale_my_cart')]" position="inside">
+            <a href="/shop/cart" id="my_cart" class="nav-link o_wsale_my_cart">
+                <i class="fa fa-shopping-cart"></i>
+                My Cart
+                <sup t-attf-class="my_cart_quantity badge badge-primary"
+                     t-esc="website_sale_order and website_sale_order.cart_quantity or ''"/>
+            </a>
         </xpath>
-        <xpath expr="//ul[@id='top_menu']/li[hasclass('dropdown')]"
-               position="replace">
-        </xpath>
-        <xpath expr="//li[contains(@t-attf-class, 'o_wsale_my_cart')]" position="replace">
-            <li t-attf-class="nav-item o_wsale_my_cart d-block">
-                <a href="/shop/cart" id="my_cart" class="nav-link o_wsale_my_cart">
-                    <i class="fa fa-shopping-cart"></i>
-                    My Cart
-                    <sup t-attf-class="my_cart_quantity badge badge-primary"
-                         t-esc="website_sale_order and website_sale_order.cart_quantity or ''"/>
-                </a>
-            </li>
-        </xpath>
-        <xpath expr="//li[hasclass('o_wsale_my_wish')]" position="replace">
-            <li class="nav-item o_wsale_my_wish te_wish_icon_head d-block" id="my_wish">
-                <a href="/shop/wishlist" class="nav-link te_wish_icon_head">
-                    <i class="fa fa-heart"/>
-                    Wishlist
-                    <sup t-attf-class="my_wish_quantity o_animate_blink badge badge-primary">
-                        <t t-esc='wishcount or "0"'/>
-                    </sup>
-                </a>
-            </li>
+        <xpath expr="//li[contains(@t-attf-class, 'o_wsale_my_wish')]" position="inside">
+            <a href="/shop/wishlist" class="nav-link te_wish_icon_head">
+                <i class="fa fa-heart"/>
+                Wishlist
+                <sup t-attf-class="my_wish_quantity o_animate_blink badge badge-primary">
+                    <t t-esc='wishcount or "0"'/>
+                </sup>
+            </a>
         </xpath>
     </template>
     <!-- ======================= Header style option 4========================= -->
@@ -536,7 +511,7 @@
                     </div>
                     <div class="row align-items-center py-2 te_header_style_4_inner">
                         <div class="col-lg-4">
-                            <t t-set="logo_show" t-value="request.website.viewref('website.option_header_off_canvas').active"/>
+                            <t t-set="logo_show" t-value="request.website.viewref('website.option_header_off_canvas_logo_show').active"/>
                             <t t-if="logo_show">
                                 <a href="/" class="navbar-brand logo te_header_before_logo">
                                     <span t-field="website.logo" t-options="{'widget': 'image'}" role="img"
@@ -585,31 +560,28 @@
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right js_usermenu" role="menu">
                                         <a role="menuitem" class="dropdown-item te_user_name">
-                                            <span class="te_user_drop_item">Hello,
-                                                <span class="te_user_drop_item"
-                                                      t-esc="user_id.name[:15] + '...' if user_id.name and len(user_id.name) &gt; 16 else user_id.name"/>
-                                            </span>
+                                            <span class="te_user_drop_item">Hello, <span class="te_user_drop_item" t-esc="user_id.name[:15] + '...' if user_id.name and len(user_id.name) &gt; 16 else user_id.name"/></span>
                                         </a>
-                                        <a href="/my/home" role="menuitem" class="dropdown-item">
-                                            <span
-                                                    class="fa fa-user"/>
-                                            <span class="te_user_drop_item">My Account</span>
+                                        <a href="/my/home" role="menuitem" class="dropdown-item"><span
+                                                class="fa fa-user"/><span class="te_user_drop_item">My Account</span>
                                         </a>
-                                        <a href="/my/orders" role="menuitem" class="dropdown-item">
-                                            <span
-                                                    class="fa fa-pie-chart"/>
-                                            <span class="te_user_drop_item">My orders</span>
+<!--                                        <t t-if="website.env.user.sudo().partner_id.seller">-->
+<!--	                                        <a href="/my/marketplace" class="dropdown-item" role="menuitem" -->
+<!--	                                            groups="odoo_marketplace.marketplace_draft_seller_group">-->
+<!--	                                            <span class="fa fa-cog"/><span class="te_user_drop_item">Marketplace</span>-->
+<!--	                                        </a>-->
+<!--	                                    </t>-->
+                                        <a href="/my/orders" role="menuitem" class="dropdown-item"><span
+                                                class="fa fa-pie-chart"/><span class="te_user_drop_item">My orders</span>
                                         </a>
                                         <a id="o_logout" class="dropdown-item"
                                            t-attf-href="/web/session/logout?redirect=/"
-                                           role="menuitem">
-                                            <span class="fa fa-sign-out"/>
-                                            <span class="te_user_drop_item">Logout</span>
+                                           role="menuitem"><span class="fa fa-sign-out"/><span class="te_user_drop_item">Logout</span>
                                         </a>
                                     </div>
                                 </div>
                                 <div groups="base.group_public" class="te_signin"
-                                     t-if="request.website.viewref('portal.user_sign_in').active">
+                                     t-if="request.website.viewref('portal.placeholder_user_sign_in').active">
                                     <t t-if="request.website.viewref('theme_clarico_vega.login_popup_ept').active">
                                         <a href="#loginPopup" class="btn-link">
                                             <span class="te_user_account_name">Sign in</span>
@@ -634,18 +606,18 @@
                 </div>
             </div>
         </xpath>
-        <xpath expr="//nav[hasclass('navbar-expand-md')]" position="attributes">
-            <attribute name="class">navbar navbar-expand-md te_header_navbar navbar-light
+        <xpath expr="//nav[hasclass('navbar-expand-lg')]" position="attributes">
+            <attribute name="class">navbar navbar-expand-lg te_header_navbar navbar-light
             </attribute>
         </xpath>
-        <xpath expr="//ul[@id='top_menu']/li[hasclass('divider')][last()]"
-               position="replace">
-        </xpath>
-        <xpath expr="//ul[@id='top_menu']/li[hasclass('dropdown')]"
-               position="replace">
-        </xpath>
-        <xpath expr="//li[contains(@t-attf-class, 'o_wsale_my_cart')]" position="replace">
-        </xpath>
+<!--        <xpath expr="//ul[@id='top_menu']/t[1]"-->
+<!--               position="replace">-->
+<!--        </xpath>-->
+<!--        <xpath expr="//ul[@id='top_menu']/t[2]"-->
+<!--               position="replace">-->
+<!--        </xpath>-->
+<!--        <xpath expr="//li[contains(@t-attf-class, 'o_wsale_my_cart')]" position="replace">-->
+<!--        </xpath>-->
 
     </template>
     <!-- ======================= Header style option 5========================= -->
@@ -677,25 +649,15 @@
                                         <p></p>
                                         <div t-attf-class="s_share te_header_w_share #{_classes or ''}">
                                             <a t-if="website.social_facebook" t-att-href="website.social_facebook"
-                                               class="btn btn-link">
-                                                <i class="fa fa-facebook"/>
-                                            </a>
+                                               class="btn btn-link"><i class="fa fa-facebook"/></a>
                                             <a t-if="website.social_twitter" t-att-href="website.social_twitter"
-                                               class="btn btn-link">
-                                                <i class="fa fa-twitter"/>
-                                            </a>
+                                               class="btn btn-link"><i class="fa fa-twitter"/></a>
                                             <a t-if="website.social_linkedin" t-att-href="website.social_linkedin"
-                                               class="btn btn-link">
-                                                <i class="fa fa-linkedin"/>
-                                            </a>
+                                               class="btn btn-link"><i class="fa fa-linkedin"/></a>
                                             <a t-if="website.social_youtube" t-att-href="website.social_youtube"
-                                               class="btn btn-link">
-                                                <i class="fa fa-youtube-play"/>
-                                            </a>
+                                               class="btn btn-link"><i class="fa fa-youtube-play"/></a>
                                             <a t-if="website.social_github" t-att-href="website.social_github"
-                                               class="btn btn-link">
-                                                <i class="fa fa-github"/>
-                                            </a>
+                                               class="btn btn-link"><i class="fa fa-github"/></a>
                                         </div>
                                     </div>
                                 </div>
@@ -750,31 +712,28 @@
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right js_usermenu" role="menu">
                                         <a role="menuitem" class="dropdown-item te_user_name">
-                                            <span class="te_user_drop_item">Hello,
-                                                <span class="te_user_drop_item"
-                                                      t-esc="user_id.name[:15] + '...' if user_id.name and len(user_id.name) &gt; 16 else user_id.name"/>
-                                            </span>
+                                            <span class="te_user_drop_item">Hello, <span class="te_user_drop_item" t-esc="user_id.name[:15] + '...' if user_id.name and len(user_id.name) &gt; 16 else user_id.name"/></span>
                                         </a>
-                                        <a href="/my/home" role="menuitem" class="dropdown-item">
-                                            <span
-                                                    class="fa fa-user"/>
-                                            <span class="te_user_drop_item">My Account</span>
+                                        <a href="/my/home" role="menuitem" class="dropdown-item"><span
+                                                class="fa fa-user"/><span class="te_user_drop_item">My Account</span>
                                         </a>
-                                        <a href="/my/orders" role="menuitem" class="dropdown-item">
-                                            <span
-                                                    class="fa fa-pie-chart"/>
-                                            <span class="te_user_drop_item">My orders</span>
+<!--                                        <t t-if="website.env.user.sudo().partner_id.seller">-->
+<!--	                                        <a href="/my/marketplace" class="dropdown-item" role="menuitem" -->
+<!--	                                            groups="odoo_marketplace.marketplace_draft_seller_group">-->
+<!--	                                            <span class="fa fa-cog"/><span class="te_user_drop_item">Marketplace</span>-->
+<!--	                                        </a>-->
+<!--	                                    </t>-->
+                                        <a href="/my/orders" role="menuitem" class="dropdown-item"><span
+                                                class="fa fa-pie-chart"/><span class="te_user_drop_item">My orders</span>
                                         </a>
                                         <a id="o_logout" class="dropdown-item"
                                            t-attf-href="/web/session/logout?redirect=/"
-                                           role="menuitem">
-                                            <span class="fa fa-sign-out"/>
-                                            <span class="te_user_drop_item">Logout</span>
+                                           role="menuitem"><span class="fa fa-sign-out"/><span class="te_user_drop_item">Logout</span>
                                         </a>
                                     </div>
                                 </div>
                                 <div groups="base.group_public" class="px-2 te_signin"
-                                     t-if="request.website.viewref('portal.user_sign_in').active">
+                                     t-if="request.website.viewref('portal.placeholder_user_sign_in').active">
                                     <t t-if="request.website.viewref('theme_clarico_vega.login_popup_ept').active">
                                         <a href="#loginPopup" class="btn-link">
                                             <span class="te_user_account_icon">
@@ -797,19 +756,19 @@
                 </div>
             </div>
         </xpath>
-        <xpath expr="//nav[hasclass('navbar-expand-md')]" position="attributes">
-            <attribute name="class">navbar navbar-expand-md te_header_navbar navbar-light
+        <xpath expr="//nav[hasclass('navbar-expand-lg')]" position="attributes">
+            <attribute name="class">navbar navbar-expand-lg te_header_navbar navbar-light
                 py-1 px-0
             </attribute>
         </xpath>
-        <xpath expr="//ul[@id='top_menu']/li[hasclass('divider')][last()]"
-               position="replace">
-        </xpath>
-        <xpath expr="//ul[@id='top_menu']/li[hasclass('dropdown')]"
-               position="replace">
-        </xpath>
-        <xpath expr="//li[contains(@t-attf-class, 'o_wsale_my_cart')]" position="replace">
-        </xpath>
+<!--        <xpath expr="//ul[@id='top_menu']/t[1]"-->
+<!--               position="replace">-->
+<!--        </xpath>-->
+<!--        <xpath expr="//ul[@id='top_menu']/t[2]"-->
+<!--               position="replace">-->
+<!--        </xpath>-->
+<!--        <xpath expr="//li[contains(@t-attf-class, 'o_wsale_my_cart')]" position="replace">-->
+<!--        </xpath>-->
     </template>
     <!-- ======================= Header style option 6========================= -->
     <template id="customize_header_style_6" inherit_id="portal.frontend_layout"
@@ -841,25 +800,15 @@
                                             <p></p>
                                             <section t-attf-class="s_share te_header_w_share #{_classes or ''}">
                                                 <a t-if="website.social_facebook" t-att-href="website.social_facebook"
-                                                   class="btn btn-link">
-                                                    <i class="fa fa-facebook"/>
-                                                </a>
+                                                   class="btn btn-link"><i class="fa fa-facebook"/></a>
                                                 <a t-if="website.social_twitter" t-att-href="website.social_twitter"
-                                                   class="btn btn-link">
-                                                    <i class="fa fa-twitter"/>
-                                                </a>
+                                                   class="btn btn-link"><i class="fa fa-twitter"/></a>
                                                 <a t-if="website.social_linkedin" t-att-href="website.social_linkedin"
-                                                   class="btn btn-link">
-                                                    <i class="fa fa-linkedin"/>
-                                                </a>
+                                                   class="btn btn-link"><i class="fa fa-linkedin"/></a>
                                                 <a t-if="website.social_youtube" t-att-href="website.social_youtube"
-                                                   class="btn btn-link">
-                                                    <i class="fa fa-youtube-play"/>
-                                                </a>
+                                                   class="btn btn-link"><i class="fa fa-youtube-play"/></a>
                                                 <a t-if="website.social_github" t-att-href="website.social_github"
-                                                   class="btn btn-link">
-                                                    <i class="fa fa-github"/>
-                                                </a>
+                                                   class="btn btn-link"><i class="fa fa-github"/></a>
                                             </section>
                                         </section>
                                     </div>
@@ -909,31 +858,28 @@
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right js_usermenu" role="menu">
                                             <a role="menuitem" class="dropdown-item te_user_name">
-                                                <span class="te_user_drop_item">Hello,
-                                                    <span class="te_user_drop_item"
-                                                          t-esc="user_id.name[:15] + '...' if user_id.name and len(user_id.name) &gt; 16 else user_id.name"/>
-                                                </span>
+                                                <span class="te_user_drop_item">Hello, <span class="te_user_drop_item" t-esc="user_id.name[:15] + '...' if user_id.name and len(user_id.name) &gt; 16 else user_id.name"/></span>
                                             </a>
-                                            <a href="/my/home" role="menuitem" class="dropdown-item">
-                                                <span
-                                                        class="fa fa-user"/>
-                                                <span class="te_user_drop_item">My Account</span>
+                                            <a href="/my/home" role="menuitem" class="dropdown-item"><span
+                                                    class="fa fa-user"/><span class="te_user_drop_item">My Account</span>
                                             </a>
-                                            <a href="/my/orders" role="menuitem" class="dropdown-item">
-                                                <span
-                                                        class="fa fa-pie-chart"/>
-                                                <span class="te_user_drop_item">My orders</span>
+<!--                                            <t t-if="website.env.user.sudo().partner_id.seller">-->
+<!--		                                        <a href="/my/marketplace" class="dropdown-item" role="menuitem" -->
+<!--		                                            groups="odoo_marketplace.marketplace_draft_seller_group">-->
+<!--		                                            <span class="fa fa-cog"/><span class="te_user_drop_item">Marketplace</span>-->
+<!--		                                        </a>-->
+<!--		                                    </t>-->
+                                            <a href="/my/orders" role="menuitem" class="dropdown-item"><span
+                                                    class="fa fa-pie-chart"/><span class="te_user_drop_item">My orders</span>
                                             </a>
                                             <a id="o_logout" class="dropdown-item"
                                                t-attf-href="/web/session/logout?redirect=/"
-                                               role="menuitem">
-                                                <span class="fa fa-sign-out"/>
-                                                <span class="te_user_drop_item">Logout</span>
+                                               role="menuitem"><span class="fa fa-sign-out"/><span class="te_user_drop_item">Logout</span>
                                             </a>
                                         </div>
                                     </div>
                                     <div groups="base.group_public" class="te_signin"
-                                         t-if="request.website.viewref('portal.user_sign_in').active">
+                                         t-if="request.website.viewref('portal.placeholder_user_sign_in').active">
                                         <t t-if="request.website.viewref('theme_clarico_vega.login_popup_ept').active">
                                             <a href="#loginPopup" class="btn-link">
                                                 <span class="te_user_account_name">Sign in</span>
@@ -965,19 +911,19 @@
                 </div>
             </div>
         </xpath>
-        <xpath expr="//nav[hasclass('navbar-expand-md')]" position="attributes">
-            <attribute name="class">navbar navbar-expand-md te_header_navbar navbar-light
+        <xpath expr="//nav[hasclass('navbar-expand-lg')]" position="attributes">
+            <attribute name="class">navbar navbar-expand-lg te_header_navbar navbar-light
                 px-0 py-2
             </attribute>
         </xpath>
-        <xpath expr="//ul[@id='top_menu']/li[hasclass('divider')][last()]"
-               position="replace">
-        </xpath>
-        <xpath expr="//ul[@id='top_menu']/li[hasclass('dropdown')]"
-               position="replace">
-        </xpath>
-        <xpath expr="//li[contains(@t-attf-class, 'o_wsale_my_cart')]" position="replace">
-        </xpath>
+<!--        <xpath expr="//ul[@id='top_menu']/t[1]"-->
+<!--               position="replace">-->
+<!--        </xpath>-->
+<!--        <xpath expr="//ul[@id='top_menu']/t[2]"-->
+<!--               position="replace">-->
+<!--        </xpath>-->
+<!--        <xpath expr="//li[contains(@t-attf-class, 'o_wsale_my_cart')]" position="replace">-->
+<!--        </xpath>-->
     </template>
     <!-- ======================= Header style option 7 ========================= -->
     <template id="customize_header_style_7" inherit_id="portal.frontend_layout"
@@ -1061,26 +1007,23 @@
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right js_usermenu" role="menu">
                                             <a role="menuitem" class="dropdown-item te_user_name">
-                                                <span class="te_user_drop_item">Hello,
-                                                    <span class="te_user_drop_item"
-                                                          t-esc="user_id.name[:15] + '...' if user_id.name and len(user_id.name) &gt; 16 else user_id.name"/>
-                                                </span>
+                                                <span class="te_user_drop_item">Hello, <span class="te_user_drop_item" t-esc="user_id.name[:15] + '...' if user_id.name and len(user_id.name) &gt; 16 else user_id.name"/></span>
                                             </a>
-                                            <a href="/my/home" role="menuitem" class="dropdown-item">
-                                                <span
-                                                        class="fa fa-user"/>
-                                                <span class="te_user_drop_item">My Account</span>
+                                            <a href="/my/home" role="menuitem" class="dropdown-item"><span
+                                                    class="fa fa-user"/><span class="te_user_drop_item">My Account</span>
                                             </a>
-                                            <a href="/my/orders" role="menuitem" class="dropdown-item">
-                                                <span
-                                                        class="fa fa-pie-chart"/>
-                                                <span class="te_user_drop_item">My orders</span>
+<!--                                            <t t-if="website.env.user.sudo().partner_id.seller">-->
+<!--		                                        <a href="/my/marketplace" class="dropdown-item" role="menuitem" -->
+<!--		                                            groups="odoo_marketplace.marketplace_draft_seller_group">-->
+<!--		                                            <span class="fa fa-cog"/><span class="te_user_drop_item">Marketplace</span>-->
+<!--		                                        </a>-->
+<!--		                                    </t>-->
+                                            <a href="/my/orders" role="menuitem" class="dropdown-item"><span
+                                                    class="fa fa-pie-chart"/><span class="te_user_drop_item">My orders</span>
                                             </a>
                                             <a id="o_logout" class="dropdown-item"
                                                t-attf-href="/web/session/logout?redirect=/"
-                                               role="menuitem">
-                                                <span class="fa fa-sign-out"/>
-                                                <span class="te_user_drop_item">Logout</span>
+                                               role="menuitem"><span class="fa fa-sign-out"/><span class="te_user_drop_item">Logout</span>
                                             </a>
                                         </div>
                                     </div>
@@ -1109,18 +1052,18 @@
                 </div>
             </div>
         </xpath>
-        <xpath expr="//nav[hasclass('navbar-expand-md')]" position="attributes">
+        <xpath expr="//nav[hasclass('navbar-expand-lg')]" position="attributes">
             <attribute name="class">navbar navbar-expand-lg te_header_navbar navbar-light
             </attribute>
         </xpath>
-        <xpath expr="//ul[@id='top_menu']/li[hasclass('divider')][last()]"
-               position="replace">
-        </xpath>
-        <xpath expr="//ul[@id='top_menu']/li[hasclass('dropdown')]"
-               position="replace">
-        </xpath>
-        <xpath expr="//li[contains(@t-attf-class, 'o_wsale_my_cart')]" position="replace">
-        </xpath>
+<!--        <xpath expr="//ul[@id='top_menu']/t[1]"-->
+<!--               position="replace">-->
+<!--        </xpath>-->
+<!--        <xpath expr="//ul[@id='top_menu']/t[2]"-->
+<!--               position="replace">-->
+<!--        </xpath>-->
+<!--        <xpath expr="//li[contains(@t-attf-class, 'o_wsale_my_cart')]" position="replace">-->
+<!--        </xpath>-->
 
     </template>
     <!-- ======================= Header style option 8========================= -->
@@ -1151,25 +1094,15 @@
                                     <p></p>
                                     <div t-attf-class="s_share te_header_w_share #{_classes or ''}">
                                         <a t-if="website.social_facebook" t-att-href="website.social_facebook"
-                                           class="btn btn-link">
-                                            <i class="fa fa-facebook"/>
-                                        </a>
+                                           class="btn btn-link"><i class="fa fa-facebook"/></a>
                                         <a t-if="website.social_twitter" t-att-href="website.social_twitter"
-                                           class="btn btn-link">
-                                            <i class="fa fa-twitter"/>
-                                        </a>
+                                           class="btn btn-link"><i class="fa fa-twitter"/></a>
                                         <a t-if="website.social_linkedin" t-att-href="website.social_linkedin"
-                                           class="btn btn-link">
-                                            <i class="fa fa-linkedin"/>
-                                        </a>
+                                           class="btn btn-link"><i class="fa fa-linkedin"/></a>
                                         <a t-if="website.social_youtube" t-att-href="website.social_youtube"
-                                           class="btn btn-link">
-                                            <i class="fa fa-youtube-play"/>
-                                        </a>
+                                           class="btn btn-link"><i class="fa fa-youtube-play"/></a>
                                         <a t-if="website.social_github" t-att-href="website.social_github"
-                                           class="btn btn-link">
-                                            <i class="fa fa-github"/>
-                                        </a>
+                                           class="btn btn-link"><i class="fa fa-github"/></a>
                                     </div>
                                 </div>
                             </div>
@@ -1201,8 +1134,8 @@
         <xpath expr="//div[@id='top_menu_collapse']" position="attributes">
             <attribute name="class">collapse navbar-collapse</attribute>
         </xpath>
-        <xpath expr="//nav[hasclass('navbar-expand-md')]" position="attributes">
-            <attribute name="class">navbar navbar-expand-md te_header_navbar navbar-light
+        <xpath expr="//nav[hasclass('navbar-expand-lg')]" position="attributes">
+            <attribute name="class">navbar navbar-expand-lg te_header_navbar navbar-light
                 py-1 px-0
             </attribute>
         </xpath>
@@ -1230,32 +1163,27 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right js_usermenu" role="menu">
                             <a role="menuitem" class="dropdown-item te_user_name">
-                                <span class="te_user_drop_item">Hello,
-                                    <span class="te_user_drop_item"
-                                          t-esc="user_id.name[:15] + '...' if user_id.name and len(user_id.name) &gt; 16 else user_id.name"/>
-                                </span>
+                                <span class="te_user_drop_item">Hello, <span class="te_user_drop_item" t-esc="user_id.name[:15] + '...' if user_id.name and len(user_id.name) &gt; 16 else user_id.name"/></span>
                             </a>
-                            <a href="/my/home" role="menuitem" class="dropdown-item">
-                                <span class="fa fa-user"/>
-                                <span class="te_user_drop_item">My
-                                    Account
-                                </span>
+                            <a href="/my/home" role="menuitem" class="dropdown-item"><span class="fa fa-user"/><span class="te_user_drop_item">My
+                                Account</span>
                             </a>
-                            <a href="/my/orders" role="menuitem" class="dropdown-item">
-                                <span class="fa fa-pie-chart"/>
-                                <span class="te_user_drop_item">My
-                                    orders
-                                </span>
+<!--                            <t t-if="website.env.user.sudo().partner_id.seller">-->
+<!--                                <a href="/my/marketplace" class="dropdown-item" role="menuitem" -->
+<!--                                    groups="odoo_marketplace.marketplace_draft_seller_group">-->
+<!--                                    <span class="fa fa-cog"/><span class="te_user_drop_item">Marketplace</span>-->
+<!--                                </a>-->
+<!--                            </t>-->
+                            <a href="/my/orders" role="menuitem" class="dropdown-item"><span class="fa fa-pie-chart"/><span class="te_user_drop_item">My
+                                orders</span>
                             </a>
                             <a id="o_logout" class="dropdown-item" t-attf-href="/web/session/logout?redirect=/"
-                               role="menuitem">
-                                <span class="fa fa-sign-out"/>
-                                <span class="te_user_drop_item">Logout</span>
+                               role="menuitem"><span class="fa fa-sign-out"/><span class="te_user_drop_item">Logout</span>
                             </a>
                         </div>
                     </div>
                     <div groups="base.group_public" class="px-2 te_signin"
-                         t-if="request.website.viewref('portal.user_sign_in').active">
+                         t-if="request.website.viewref('portal.placeholder_user_sign_in').active">
                         <t t-if="request.website.viewref('theme_clarico_vega.login_popup_ept').active">
                             <a href="#loginPopup" class="btn-link">
                                 <span class="te_user_account_icon">
@@ -1275,10 +1203,10 @@
                 </div>
             </div>
         </xpath>
-<!--        <xpath expr="//ul[@id='top_menu']/li[hasclass('divider')][last()]"-->
+<!--        <xpath expr="//ul[@id='top_menu']/t[1]"-->
 <!--               position="replace">-->
 <!--        </xpath>-->
-<!--        <xpath expr="//ul[@id='top_menu']/li[hasclass('dropdown')]"-->
+<!--        <xpath expr="//ul[@id='top_menu']/t[2]"-->
 <!--               position="replace">-->
 <!--        </xpath>-->
 <!--        <xpath expr="//li[contains(@t-attf-class, 'o_wsale_my_cart')]" position="replace">-->
@@ -1307,14 +1235,14 @@
                 <div class="container te_header_style_9_main">
                     <div class="row align-items-center py-2 te_header_style_9_inner">
                         <div class="col-lg-4 col-md-6 te_logo_left">
-                            <t t-set="logo_show" t-value="request.website.viewref('website.option_header_off_canvas').active"/>
+                            <t t-set="logo_show" t-value="request.website.viewref('website.option_header_off_canvas_logo_show').active"/>
                             <t t-if="logo_show">
                                 <a href="/" class="navbar-brand logo te_header_before_logo">
                                     <span t-field="website.logo" t-options="{'widget': 'image'}" role="img"
                                           t-att-aria-label="'Logo of %s' % website.name" t-att-title="website.name"/>
                                 </a>
                             </t>
-                            <t t-else="logo_show">
+                            <t t-else="">
                                 <a class="te_header_before_logo navbar-brand" href="/" t-if="website"
                                    t-field="website.name">My Website
                                 </a>
@@ -1341,8 +1269,8 @@
         <xpath expr="//div[@id='top_menu_collapse']" position="attributes">
             <attribute name="class">collapse navbar-collapse</attribute>
         </xpath>
-        <xpath expr="//nav[hasclass('navbar-expand-md')]" position="attributes">
-            <attribute name="class">navbar navbar-expand-md te_header_navbar te_header_9_navbar navbar-light
+        <xpath expr="//nav[hasclass('navbar-expand-lg')]" position="attributes">
+            <attribute name="class">navbar navbar-expand-lg te_header_navbar te_header_9_navbar navbar-light
                 py-1 px-0
             </attribute>
         </xpath>
@@ -1375,32 +1303,27 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right js_usermenu" role="menu">
                             <a role="menuitem" class="dropdown-item te_user_name">
-                                <span class="te_user_drop_item">Hello,
-                                    <span class="te_user_drop_item"
-                                          t-esc="user_id.name[:15] + '...' if user_id.name and len(user_id.name) &gt; 16 else user_id.name"/>
-                                </span>
+                                <span class="te_user_drop_item">Hello, <span class="te_user_drop_item" t-esc="user_id.name[:15] + '...' if user_id.name and len(user_id.name) &gt; 16 else user_id.name"/></span>
                             </a>
-                            <a href="/my/home" role="menuitem" class="dropdown-item">
-                                <span class="fa fa-user"/>
-                                <span class="te_user_drop_item">My
-                                    Account
-                                </span>
+                            <a href="/my/home" role="menuitem" class="dropdown-item"><span class="fa fa-user"/><span class="te_user_drop_item">My
+                                Account</span>
                             </a>
-                            <a href="/my/orders" role="menuitem" class="dropdown-item">
-                                <span class="fa fa-pie-chart"/>
-                                <span class="te_user_drop_item">My
-                                    orders
-                                </span>
+<!--                            <t t-if="website.env.user.sudo().partner_id.seller">-->
+<!--                                <a href="/my/marketplace" class="dropdown-item" role="menuitem" -->
+<!--                                    groups="odoo_marketplace.marketplace_draft_seller_group">-->
+<!--                                    <span class="fa fa-cog"/><span class="te_user_drop_item">Marketplace</span>-->
+<!--                                </a>-->
+<!--                            </t>-->
+                            <a href="/my/orders" role="menuitem" class="dropdown-item"><span class="fa fa-pie-chart"/><span class="te_user_drop_item">My
+                                orders</span>
                             </a>
                             <a id="o_logout" class="dropdown-item" t-attf-href="/web/session/logout?redirect=/"
-                               role="menuitem">
-                                <span class="fa fa-sign-out"/>
-                                <span class="te_user_drop_item">Logout</span>
+                               role="menuitem"><span class="fa fa-sign-out"/><span class="te_user_drop_item">Logout</span>
                             </a>
                         </div>
                     </div>
                     <div groups="base.group_public" class="te_signin"
-                         t-if="request.website.viewref('portal.user_sign_in').active">
+                         t-if="request.website.viewref('portal.placeholder_user_sign_in').active">
                         <t t-if="request.website.viewref('theme_clarico_vega.login_popup_ept').active">
                             <a href="#loginPopup" class="btn-link">
                                 <span class="te_user_account_icon d-block">
@@ -1428,14 +1351,14 @@
                 </div>
             </div>
         </xpath>
-        <xpath expr="//ul[@id='top_menu']/li[hasclass('divider')][last()]"
-               position="replace">
-        </xpath>
-        <xpath expr="//ul[@id='top_menu']/li[hasclass('dropdown')]"
-               position="replace">
-        </xpath>
-        <xpath expr="//li[contains(@t-attf-class, 'o_wsale_my_cart')]" position="replace">
-        </xpath>
+<!--        <xpath expr="//ul[@id='top_menu']/t[1]"-->
+<!--               position="replace">-->
+<!--        </xpath>-->
+<!--        <xpath expr="//ul[@id='top_menu']/t[2]"-->
+<!--               position="replace">-->
+<!--        </xpath>-->
+<!--        <xpath expr="//li[contains(@t-attf-class, 'o_wsale_my_cart')]" position="replace">-->
+<!--        </xpath>-->
     </template>
     <!-- ======================= Header style option 10========================= -->
     <template id="customize_header_style_10" inherit_id="portal.frontend_layout"
@@ -1467,8 +1390,8 @@
         <xpath expr="//div[@id='top_menu_collapse']" position="attributes">
             <attribute name="class">collapse navbar-collapse</attribute>
         </xpath>
-        <xpath expr="//nav[hasclass('navbar-expand-md')]" position="attributes">
-            <attribute name="class">navbar navbar-expand-md te_header_navbar te_header_navbar_10 navbar-light
+        <xpath expr="//nav[hasclass('navbar-expand-lg')]" position="attributes">
+            <attribute name="class">navbar navbar-expand-lg te_header_navbar te_header_navbar_10 navbar-light
                 py-1 px-0
             </attribute>
         </xpath>
@@ -1508,31 +1431,27 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-right js_usermenu" role="menu">
                                 <a role="menuitem" class="dropdown-item te_user_name">
-                                    <span class="te_user_drop_item">Hello,
-                                        <span class="te_user_drop_item"
-                                              t-esc="user_id.name[:15] + '...' if user_id.name and len(user_id.name) &gt; 16 else user_id.name"/>
-                                    </span>
+                                    <span class="te_user_drop_item">Hello, <span class="te_user_drop_item" t-esc="user_id.name[:15] + '...' if user_id.name and len(user_id.name) &gt; 16 else user_id.name"/></span>
                                 </a>
-                                <a href="/my/home" role="menuitem" class="dropdown-item">
-                                    <span class="fa fa-user"/>
-                                    <span class="te_user_drop_item">My
-                                        Account
-                                    </span>
+                                <a href="/my/home" role="menuitem" class="dropdown-item"><span class="fa fa-user"/><span class="te_user_drop_item">My
+                                    Account</span>
                                 </a>
-                                <a href="/my/orders" role="menuitem" class="dropdown-item">
-                                    <span
-                                            class="fa fa-pie-chart"/>
-                                    <span class="te_user_drop_item">My orders</span>
+<!--                                <t t-if="website.env.user.sudo().partner_id.seller">-->
+<!--                                    <a href="/my/marketplace" class="dropdown-item" role="menuitem" -->
+<!--                                        groups="odoo_marketplace.marketplace_draft_seller_group">-->
+<!--                                        <span class="fa fa-cog"/><span class="te_user_drop_item">Marketplace</span>-->
+<!--                                    </a>-->
+<!--                                </t>-->
+                                <a href="/my/orders" role="menuitem" class="dropdown-item"><span
+                                        class="fa fa-pie-chart"/><span class="te_user_drop_item">My orders</span>
                                 </a>
                                 <a id="o_logout" class="dropdown-item" t-attf-href="/web/session/logout?redirect=/"
-                                   role="menuitem">
-                                    <span class="fa fa-sign-out"/>
-                                    <span class="te_user_drop_item">Logout</span>
+                                   role="menuitem"><span class="fa fa-sign-out"/><span class="te_user_drop_item">Logout</span>
                                 </a>
                             </div>
                         </div>
                         <div groups="base.group_public" class="px-2 te_signin"
-                             t-if="request.website.viewref('portal.user_sign_in').active">
+                             t-if="request.website.viewref('portal.placeholder_user_sign_in').active">
                             <t t-if="request.website.viewref('theme_clarico_vega.login_popup_ept').active">
                                 <a href="#loginPopup" class="btn-link">
                                     <span class="te_user_account_icon">
@@ -1562,10 +1481,10 @@
                 </div>
             </div>
         </xpath>
-<!--        <xpath expr="//ul[@id='top_menu']/li[hasclass('divider')][last()]"-->
+<!--        <xpath expr="//ul[@id='top_menu']/t[1]"-->
 <!--               position="replace">-->
 <!--        </xpath>-->
-<!--        <xpath expr="//ul[@id='top_menu']/li[hasclass('dropdown')]"-->
+<!--        <xpath expr="//ul[@id='top_menu']/t[2]"-->
 <!--               position="replace">-->
 <!--        </xpath>-->
 <!--        <xpath expr="//li[contains(@t-attf-class, 'o_wsale_my_cart')]" position="replace">-->
@@ -1600,8 +1519,8 @@
         <xpath expr="//div[@id='top_menu_collapse']" position="attributes">
             <attribute name="class">collapse navbar-collapse</attribute>
         </xpath>
-        <xpath expr="//nav[hasclass('navbar-expand-md')]" position="attributes">
-            <attribute name="class">navbar navbar-expand-md te_header_navbar te_header_11_navbar navbar-light
+        <xpath expr="//nav[hasclass('navbar-expand-lg')]" position="attributes">
+            <attribute name="class">navbar navbar-expand-lg te_header_navbar te_header_11_navbar navbar-light
                 py-1 px-0
             </attribute>
         </xpath>
@@ -1627,8 +1546,7 @@
                          t-if="website_sale_pricelists and len(website_sale_pricelists)&gt;1">
                         <t t-call="website_sale.pricelist_list"/>
                     </div>
-                    <div class="px-1 te_language_selector"
-                         t-if="(request and request.is_frontend_multilang and len(languages) &gt; 1) or (website and (editable or translatable))">
+                    <div class="px-1 te_language_selector" t-if="(request and request.is_frontend_multilang and len(languages) &gt; 1) or (website and (editable or translatable))">
                         <t t-call="theme_clarico_vega.header_language_ept"></t>
                     </div>
                     <t t-set="website_vertical_menu"
@@ -1646,32 +1564,27 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-right js_usermenu" role="menu">
                                 <a role="menuitem" class="dropdown-item te_user_name">
-                                    <span class="te_user_drop_item">Hello,
-                                        <span class="te_user_drop_item"
-                                              t-esc="user_id.name[:15] + '...' if user_id.name and len(user_id.name) &gt; 16 else user_id.name"/>
-                                    </span>
+                                    <span class="te_user_drop_item">Hello, <span class="te_user_drop_item" t-esc="user_id.name[:15] + '...' if user_id.name and len(user_id.name) &gt; 16 else user_id.name"/></span>
                                 </a>
-                                <a href="/my/home" role="menuitem" class="dropdown-item">
-                                    <span class="fa fa-user"/>
-                                    <span class="te_user_drop_item">My
-                                        Account
-                                    </span>
+                                <a href="/my/home" role="menuitem" class="dropdown-item"><span class="fa fa-user"/><span class="te_user_drop_item">My
+                                    Account</span>
                                 </a>
-                                <a href="/my/orders" role="menuitem" class="dropdown-item">
-                                    <span class="fa fa-pie-chart"/>
-                                    <span class="te_user_drop_item">My
-                                        orders
-                                    </span>
+<!--                                <t t-if="website.env.user.sudo().partner_id.seller">-->
+<!--                                    <a href="/my/marketplace" class="dropdown-item" role="menuitem" -->
+<!--                                        groups="odoo_marketplace.marketplace_draft_seller_group">-->
+<!--                                        <span class="fa fa-cog"/><span class="te_user_drop_item">Marketplace</span>-->
+<!--                                    </a>-->
+<!--                                </t>-->
+                                <a href="/my/orders" role="menuitem" class="dropdown-item"><span class="fa fa-pie-chart"/><span class="te_user_drop_item">My
+                                    orders</span>
                                 </a>
                                 <a id="o_logout" class="dropdown-item" t-attf-href="/web/session/logout?redirect=/"
-                                   role="menuitem">
-                                    <span class="fa fa-sign-out"/>
-                                    <span class="te_user_drop_item">Logout</span>
+                                   role="menuitem"><span class="fa fa-sign-out"/><span class="te_user_drop_item">Logout</span>
                                 </a>
                             </div>
                         </div>
                         <div groups="base.group_public" class="te_signin"
-                             t-if="request.website.viewref('portal.user_sign_in').active">
+                             t-if="request.website.viewref('portal.placeholder_user_sign_in').active">
                             <t t-if="request.website.viewref('theme_clarico_vega.login_popup_ept').active">
                                 <a t-attf-href="#loginPopup" class="btn-link">
                                     <span class="te_user_account_icon d-block">
@@ -1700,10 +1613,10 @@
                 </div>
             </div>
         </xpath>
-<!--        <xpath expr="//ul[@id='top_menu']/li[hasclass('divider')][last()]"-->
+<!--        <xpath expr="//ul[@id='top_menu']/t[1]"-->
 <!--               position="replace">-->
 <!--        </xpath>-->
-<!--        <xpath expr="//ul[@id='top_menu']/li[hasclass('dropdown')]"-->
+<!--        <xpath expr="//ul[@id='top_menu']/t[2]"-->
 <!--               position="replace">-->
 <!--        </xpath>-->
 <!--        <xpath expr="//li[contains(@t-attf-class, 'o_wsale_my_cart')]" position="replace">-->
@@ -1758,10 +1671,10 @@
     <!-- Replaced signin from header -->
     <template id="portal_show_sign_in_ept" inherit_id="portal.user_sign_in"
               name="Show Sign In">
-        <xpath expr="//li[@groups='base.group_public']" position="replace">
+        <xpath expr="///li[@groups='base.group_public']" position="replace">
         </xpath>
-        <xpath expr="//li[@groups='base.group_public']" position="replace">
-        </xpath>
+<!--        <xpath expr="///li[@groups='base.group_public']" position="replace">-->
+<!--        </xpath>-->
     </template>
 
     <!-- Header Wishlist Option-->
@@ -1787,8 +1700,8 @@
 
     <!-- To Repace Default Whishlist In Navbar -->
     <template id="header_ept_wishlist" inherit_id="website_sale_wishlist.header_wishlist_link" name="Header Shop Wishlist Link">
-        <xpath expr="//li[hasclass('o_wsale_my_wish')]" position="replace">
-            <li class="nav-item o_wsale_my_wish"></li>
+        <xpath expr="//li[contains(@t-attf-class, 'o_wsale_my_wish')]" position="replace">
+            <li class="nav-item o_wsale_my_wish" t-att-style="not wishcount and 'display:none;'"></li>
         </xpath>
     </template>
 
@@ -1807,25 +1720,22 @@
         </xpath>
         <xpath expr="//div[@role='search']" position="replace">
             <t t-if="is_shop or is_product">
-                <t t-set="action"
-                   t-value="keep('/shop'+ ('/category/'+slug(category)) if category else None, search=0)"/>
+                <t t-set="action" t-value="keep('/shop'+ ('/category/'+slug(category)) if category else None, search=0)"/>
             </t>
             <t t-if="attrib_values">
                 <t t-foreach="attrib_values" t-as="a">
-                    <input type="hidden" name="attrib" t-att-value="'%s-%s' % (a[0], a[1])"/>
+                    <input type="hidden" name="attrib" t-att-value="'%s-%s' % (a[0], a[1])" />
                 </t>
             </t>
             <t t-if="is_shop or is_product">
-                <form t-attf-class="o_wsale_products_searchbar_form o_wait_lazy_js #{_classes}"
-                      t-att-action="action if action else '/shop'" method="get">
+                <form t-attf-class="o_wsale_products_searchbar_form o_wait_lazy_js #{_classes}" t-att-action="action if action else '/shop'" method="get">
                     <t>$0</t>
                     <input name="order" type="hidden" class="o_wsale_search_order_by" value=""/>
                     <t t-raw="0"/>
                 </form>
             </t>
             <t t-else="">
-                <form t-attf-class="o_wsale_products_searchbar_form o_wait_lazy_js #{_classes}" action="/shop"
-                      method="get">
+                <form t-attf-class="o_wsale_products_searchbar_form o_wait_lazy_js #{_classes}" action="/shop" method="get">
                     <t>$0</t>
                     <input name="order" type="hidden" class="o_wsale_search_order_by" value=""/>
                     <t t-raw="0"/>

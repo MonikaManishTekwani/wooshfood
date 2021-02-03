@@ -11,7 +11,6 @@
 	& #top_menu{
 		> li > a.nav-link{
 			padding-bottom: 1rem;
-			color: grey !important;
 		}
 	}
 }
@@ -68,16 +67,15 @@ header.affixed > nav.navbar
 	& #top_menu{
 		margin:0px auto;
 		>li > a.nav-link {
-			border-top: 2px solid;
+			border-top: 2px solid nth($f_color,27);
 			@include style(2,6);
 			font-weight: 600;
 			@include position(relative) 
 			padding-top:1rem;
-			color: grey !important;
 		}
 		>li > a.nav-link.active
 		{
-			border-top: 2px solid grey;
+			border-top: 2px solid nth($f_color,19);
 		} 
 	}
 }
@@ -249,7 +247,7 @@ header.affixed > nav.navbar
         form.o_wsale_products_searchbar_form{
             .dropdown-menu.show{
                 & button.dropdown-item:active{
-                    color: black !important;
+                    color: nth($f_color, 5) !important;
                 }
             }
         }

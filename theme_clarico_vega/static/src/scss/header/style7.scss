@@ -200,7 +200,7 @@
 		height: 100%;
 		@include position(fixed,0,unset,unset,0);
 		visibility:hidden;
-// 		background-color: rgba(nth($f_color,5),0.9);
+		background-color: rgba(nth($f_color,5),0.9);
 		text-align: center;
 		@include transition(all, 0.25s, ease-in-out);
 		z-index: 999;
@@ -337,7 +337,7 @@
     form.o_wsale_products_searchbar_form{
         .dropdown-menu.show{
             & button.dropdown-item:active{
-                color: black !important;
+                color: nth($f_color, 5) !important;
             }
         }
     }
@@ -571,14 +571,9 @@
 /*Menu label text styles*/
 #top_menu_collapse #top_menu > li > a.nav-link span#menu_label_tx_span{
     top: 16px;
-    color: grey !important;
     @include media-breakpoint-down(sm){
         top:auto;
     }
-}
-
-#top_menu_collapse #top_menu > li > a.nav-link {
-    color: grey !important;
 }
 @include media-breakpoint-down(md){
     .navbar-collapse span.te_custom_menu_label.label_tx:before {

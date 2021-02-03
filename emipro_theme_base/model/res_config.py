@@ -38,15 +38,6 @@ class res_config(models.TransientModel):
         default='1', readonly=False, help="Number of lines to show in product name for shop.")
     is_auto_play = fields.Boolean(string='Slider Auto Play', related='website_id.is_auto_play', default=True, readonly=False)
 
-    is_pwa = fields.Boolean(string='PWA', related='website_id.is_pwa', readonly=False, help="Pwa will be enabled.")
-    pwa_name = fields.Char(string='Name', related='website_id.pwa_name', readonly=False)
-    pwa_short_name = fields.Char(string='Short Name', related='website_id.pwa_short_name', readonly=False)
-    pwa_theme_color = fields.Char(string='Theme Color', related='website_id.pwa_theme_color', readonly=False)
-    pwa_bg_color = fields.Char(string='Background Color', related='website_id.pwa_bg_color', readonly=False)
-    pwa_start_url = fields.Char(string='Start URL', related='website_id.pwa_start_url', readonly=False)
-    app_image_512 = fields.Binary(string='Application Image(512x512)', related='website_id.app_image_512',
-                                  readonly=False)
-
     @api.onchange('is_load_more')
     def get_value_icon_load_more(self):
         if self.is_load_more == False:

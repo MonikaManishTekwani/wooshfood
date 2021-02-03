@@ -6,11 +6,11 @@
 	@include position(relative,null,null,null,null);
 	z-index: 1;
 	background-color:nth($f_color,27) !important;
-	color: black !important;
+	color: nth($f_color,19) !important;
 	
 	&.btn-secondary, &.btn-link
     {
-		color: black !important;
+		color: theme-color("secondary") !important;
 		background-color:nth($f_color,27) !important;
 		border-color:theme-color("secondary") !important;
 		&:before{

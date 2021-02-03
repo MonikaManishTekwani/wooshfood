@@ -2,7 +2,7 @@
 .te_theme_button{
 	@include position(relative,null,null,null,null);
 	overflow: hidden;
-	color:nth($f_color,19);
+	color: black !important;
 	z-index: 1;
 	-webkit-transition: .2s cubic-bezier(0.19, 0.4, 0.9, 0.76) background;
 	transition: .2s cubic-bezier(0.19, 0.4, 0.9, 0.76) background; /* Transition mixin is not compatible with this property structure.*/
@@ -33,7 +33,7 @@
 		font-size:nth($f_sizes,3);
     }
 	&:hover {
-	    color:nth($f_color,5);
+	    color: black !important;
         background-color:nth($f_color,19);
         @include border(1px,19,solid);
 

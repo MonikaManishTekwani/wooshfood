@@ -3,7 +3,7 @@
 {
     @include position(relative);
     background-color:nth($f_color,19);
-    color: black !important;
+    color:nth($f_color,5);
 
     &.btn-secondary, &.btn-link
     {
@@ -15,7 +15,7 @@
         }
 		&:hover {
 			background-color:nth($f_color,3) !important;
-            color:black !important;
+            color:nth($f_color,5) !important;
         }
     }
     &.btn-danger

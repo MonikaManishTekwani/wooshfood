@@ -93,7 +93,6 @@
             .fa
             {
                 font-size:nth($f_sizes,12);
-                color: black;
             }
             @include media-breakpoint-down(sm)
             {
@@ -140,7 +139,7 @@
 {
 	.oe_price_h4 .oe_default_price
 	{
-		color:black !important;
+		color:nth($f_color,9) !important;
 	}
 }
 select#slider_category_option option {
@@ -642,8 +641,7 @@ select#slider_category_option {
 			{
 				cursor: not-allowed;
 				color:#fff;
-				//changes
-				background: rgba(0, 0, 0, 0.15);
+				background: rgba(nth($f_color,19),0.6);
 			}
 		}
 	}
@@ -693,8 +691,7 @@ select#slider_category_option {
 			{
 				cursor: not-allowed;
 				color:nth($f_color,5);
-				//changes
-				background: rgba(0, 0, 0, 19);
+				background: rgba(nth($f_color,19),0.6);
 			}
 			.te_quick_view
 			{

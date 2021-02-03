@@ -5,7 +5,7 @@
 import datetime
 import json
 from datetime import timedelta, date
-from odoo.http import request, Controller, route
+from odoo.http import request
 from odoo.tools.safe_eval import safe_eval
 from werkzeug.exceptions import NotFound
 from odoo.exceptions import UserError
@@ -84,6 +84,18 @@ class EmiproThemeBase(http.Controller):
 
         if 'error' not in qcontext and request.httprequest.method == 'POST':
             try:
+                website_mailing_list_id = request.website.mailing_list_id
+                # condition for news letter subscribe from signup pop
+                if kw.get('is_subscribe_true', False) == '1' and website_mailing_list_id:
+                    mailing_contact = request.env['mailing.contact'].sudo().create(
+                        {'name': kw.get('name'),
+                         'email': kw.get('login'),
+                         })
+                    mailing_list_contact = request.env['mailing.contact.subscription'].sudo().create(
+                        {
+                            'list_id': website_mailing_list_id.id,
+                            'contact_id': mailing_contact.id,
+                        })
                 values = {key: qcontext.get(key) for key in ('login', 'name', 'password')}
                 if not values:
                     result.update({'is_success':False,'error':'The form was not properly filled in.'})
@@ -224,16 +236,16 @@ class EmiproThemeBase(http.Controller):
                              qcontext={'rec_id': rec_id}).render()
 
     @http.route(['/shop/cart/update_custom'], type='json', auth="public", methods=['GET', 'POST'], website=True, csrf=False)
-    def cart_update(self, product_id, add_qty=1, set_qty=0, product_custom_attribute_values = None, **kw):
+    def cart_update(self, product_id, add_qty=1, set_qty=0, **kw):
         """This route is called when adding a product to cart (no options)."""
         sale_order = request.website.sale_get_order(force_create=True)
         if sale_order.state != 'draft':
             request.session['sale_order_id'] = None
             sale_order = request.website.sale_get_order(force_create=True)
 
-        # product_custom_attribute_values = None
-        if product_custom_attribute_values:
-            product_custom_attribute_values = json.loads(product_custom_attribute_values)
+        product_custom_attribute_values = None
+        if kw.get('product_custom_attribute_values'):
+            product_custom_attribute_values = json.loads(kw.get('product_custom_attribute_values'))
 
         no_variant_attribute_values = None
         if kw.get('no_variant_attribute_values'):
@@ -243,7 +255,6 @@ class EmiproThemeBase(http.Controller):
             sale_order._cart_update(
                 product_id=int(product_id),
                 add_qty=add_qty,
-                product_custom_attribute_values=product_custom_attribute_values,
                 set_qty=set_qty)
             return True
         else:
@@ -280,9 +291,8 @@ class EmiproThemeBase(http.Controller):
             return response.render()
 
     @http.route([
-        # '/brand',
+        '/brand',
         '/brand/<model("product.brand.ept"):brand>',
-        '/brand/page/<int:page>',
         '/brand/<model("product.brand.ept"):brand>/page/<int:page>',
     ], type='http', auth="public", website=True)
     def Brand(self, brand=None, page=0, category=None, search='', ppg=False, **post):
@@ -326,9 +336,7 @@ class EmiproThemeBase(http.Controller):
 
         request.context = dict(request.context, pricelist=pricelist.id, partner=request.env.user.partner_id)
 
-        url = "/brand"
-        if brand:
-            url = "/brand/%s" % slug(brand)
+        url = "/shop"
         if search:
             post["search"] = search
         if attrib_list:
@@ -440,28 +448,19 @@ class EmiproThemeBase(http.Controller):
         sale_report_ids = [x[0] for x in request.env.cr.fetchall()]
         products = request.env['sale.report'].sudo().browse(sale_report_ids).mapped('product_tmpl_id')
         if products:
-            domain = request.website.sale_product_domain()
-            domain.append(('website_published', '=', True))
-            domain.append(('type', '!=', 'service'))
-            domain.append(('id','in',products.ids))
-            products = request.env['product.template'].sudo().search(domain)
-            if products:
-                values = {
-                    'filter_data': products,
-                    'is_default': False,
-                    'show_view_all': False,
-                }
-                html_slider_data = self.get_template_html(style_id, values)
-                return html_slider_data
+            values = {
+                'filter_data': products,
+                'is_default': False,
+                'show_view_all': False,
+            }
+            html_slider_data = self.get_template_html(style_id, values)
+            return html_slider_data
 
     @http.route(['/get_new_product_data'], type='json', auth="public", website=True)
     def get_new_product_data(self, **kwargs):
 
         style_id = kwargs.get('style_id', False)
-        domain = request.website.sale_product_domain()
-        domain.append(('website_published', '=', True))
-        domain.append(('type', '!=', 'service'))
-        products = request.env['product.template'].sudo().search(domain, order='id desc',
+        products = request.env['product.template'].sudo().search([('website_published', '=', True)], order='id desc',
                                                                  limit=10)
         if products:
             values = {
@@ -720,87 +719,3 @@ class EptWebsiteSaleVariantController(VariantController):
         except Exception as e:
             return res
         return res
-
-class PwaMain(http.Controller):
-
-    def get_asset_urls(self, asset_xml_id):
-        qweb = request.env['ir.qweb'].sudo()
-        assets = qweb._get_asset_nodes(asset_xml_id, {}, True, True)
-        urls = []
-        for asset in assets:
-            if asset[0] == 'link':
-                urls.append(asset[1]['href'])
-            if asset[0] == 'script':
-                urls.append(asset[1]['src'])
-        return urls
-
-    @route('/service_worker', type='http', auth="public")
-    def service_worker(self):
-        qweb = request.env['ir.qweb'].sudo()
-        urls = []
-        urls.extend(self.get_asset_urls("web.assets_common"))
-        urls.extend(self.get_asset_urls("web.assets_backend"))
-        version_list = []
-        website_id = request.env['website'].sudo().get_current_website().id
-        languages = request.env['website'].sudo().get_current_website().language_ids
-        lang_code = request.env.lang
-        current_lang = request.env['res.lang']._lang_get(lang_code)
-        for url in urls:
-            version_list.append(url.split('/')[3])
-        cache_version = '-'.join(version_list)
-        mimetype = 'text/javascript;charset=utf-8'
-        content = qweb.render('emipro_theme_base.service_worker', {
-            'pwa_cache_name': cache_version + '-pwa_cache-' + str(website_id),
-            'website_id': website_id,
-        })
-        return request.make_response(content, [('Content-Type', mimetype)])
-
-    @route('/pwa_ept/manifest/<int:website_id>', type='http', auth="public", website=True)
-    def manifest(self, website_id=None):
-        qweb = request.env['ir.qweb'].sudo()
-        website = request.env['website'].search([('id', '=', website_id)]) if website_id else request.website
-        pwa_name = website.pwa_name if website.pwa_name else 'PWA Website'
-        pwa_short_name = website.pwa_short_name if website.pwa_short_name else 'PWA Website'
-        pwa_bg_color = website.pwa_bg_color if website.pwa_bg_color else '#dddddd'
-        pwa_theme_color = website.pwa_theme_color if website.pwa_theme_color else '#dddddd'
-        pwa_start_url = website.pwa_start_url if website.pwa_start_url else '/'
-        app_image_48 = "/web/image/website/%s/app_image_512/48x48" % (
-            website.id) if website.app_image_512 else '/pwa_ept/static/src/img/48x48.png'
-        app_image_72 = "/web/image/website/%s/app_image_512/72x72" % (
-            website.id) if website.app_image_512 else '/pwa_ept/static/src/img/72x72.png'
-        app_image_96 = "/web/image/website/%s/app_image_512/96x96" % (
-            website.id) if website.app_image_512 else '/pwa_ept/static/src/img/96x96.png'
-        app_image_144 = "/web/image/website/%s/app_image_512/144x144" % (
-            website.id) if website.app_image_512 else '/pwa_ept/static/src/img/144x144.png'
-        app_image_152 = "/web/image/website/%s/app_image_512/152x152" % (
-            website.id) if website.app_image_512 else '/pwa_ept/static/src/img/152x152.png'
-        app_image_168 = "/web/image/website/%s/app_image_512/168x168" % (
-            website.id) if website.app_image_512 else '/pwa_ept/static/src/img/168x168.png'
-        app_image_192 = "/web/image/website/%s/app_image_512/192x192" % (
-            website.id) if website.app_image_512 else '/pwa_ept/static/src/img/192x192.png'
-        app_image_256 = "/web/image/website/%s/app_image_512/256x256" % (
-            website.id) if website.app_image_512 else '/pwa_ept/static/src/img/256x256.png'
-        app_image_384 = "/web/image/website/%s/app_image_512/384x384" % (
-            website.id) if website.app_image_512 else '/pwa_ept/static/src/img/384x384.png'
-        app_image_512 = "/web/image/website/%s/app_image_512/512x512" % (
-            website.id) if website.app_image_512 else '/pwa_ept/static/src/img/512x512.png'
-
-        mimetype = 'application/json;charset=utf-8'
-        content = qweb.render('emipro_theme_base.manifest', {
-            'pwa_name': pwa_name,
-            'pwa_short_name': pwa_short_name,
-            'pwa_start_url': pwa_start_url,
-            'app_image_48': app_image_48,
-            'app_image_72': app_image_72,
-            'app_image_96': app_image_96,
-            'app_image_144': app_image_144,
-            'app_image_152': app_image_152,
-            'app_image_168': app_image_168,
-            'app_image_192': app_image_192,
-            'app_image_256': app_image_256,
-            'app_image_384': app_image_384,
-            'app_image_512': app_image_512,
-            'background_color': pwa_bg_color,
-            'theme_color': pwa_theme_color,
-        })
-        return request.make_response(content, [('Content-Type', mimetype)])

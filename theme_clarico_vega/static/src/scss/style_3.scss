@@ -1,4 +1,3 @@
-
 /***********************************************
 				Shop
 			----------------
@@ -92,7 +91,7 @@ body.editor_enable
         }
         .mCSB_scrollTools .mCSB_draggerRail{
             height:auto;
-//             background-color: rgba(nth($f_color,19),0.15);
+            background-color: rgba(nth($f_color,19),0.15);
         }
 	}
 }
@@ -278,7 +277,6 @@ body.editor_enable
 		margin-bottom: 5px;
 		.o_wsale_apply_layout
 		{
-		    color: grey !important;
 	        margin-top:8px !important;
 	   	}
 	   	.dropdown_sorty_by
@@ -469,8 +467,8 @@ body.editor_enable
 }
 .te_sort_btn{
     font-size:nth($f_sizes,3);
-    color: grey !important;
 	border:1px solid $border-color;
+	color: grey !important;
 	&:hover
 	{
 		color: grey !important;
@@ -667,7 +665,6 @@ body.editor_enable
 		}
 		h6.o_wsale_products_item_title
 		{
-		    color: grey !important;
 			margin-bottom: 0;
 			.product_name
 			{
@@ -741,7 +738,7 @@ body.editor_enable
 					&:disabled
 					{
 						color:nth($f_color,5)!important;
-// 						background:rgba(nth($f_color,19),0.65);
+						background:rgba(nth($f_color,19),0.65);
 						@include border(1px,19,solid);
 					}
 				}
@@ -833,8 +830,8 @@ body.editor_enable
 	}
 	.active
 	{
-		color:grey !important;
-// 		border:1px solid rgba(nth($f_color,19),0.4);
+		color:nth($f_color,19);
+		border:1px solid rgba(nth($f_color,19),0.4);
 	}
 }
 /*=============== 03. List View =================*/

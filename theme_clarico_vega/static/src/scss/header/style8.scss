@@ -109,8 +109,7 @@
 	}
 }
 .te_header_navbar #top_menu_collapse #top_menu > li > a.nav-link.active {
-//     color: nth($f_color, 19);
-    color: grey !important;
+    color: nth($f_color, 19);
 }
 .o_header_affix .te_header_navbar .navbar-brand.logo img
 {
@@ -448,7 +447,7 @@
         color:nth($f_color,5);
     }
     > div.te_header_account a.btn-link{
-        color:black;
+        color:nth($f_color,5);
     }
 }
 .navbar-light .navbar-nav .show > .nav-link,
@@ -595,7 +594,7 @@ body.fixed-header{
     .te_header_before_left {
         > div a,
         > div .btn-link{
-            color: black;
+            color: nth($f_color,5);
         }
     }
     .row.align-items-center
@@ -609,7 +608,7 @@ body.fixed-header{
             }
             button.btn.btn-primary.oe_search_button
             {
-                color: grey !important;
+                color:nth($f_color,5);
             }
         }
     }

@@ -11,75 +11,26 @@
                 </div>
             </div>
         </xpath>-->
-        <record id="contactus" model="ir.ui.view">
-            <field name="name">Contact Us</field>
-            <field name="type">qweb</field>
-            <field name="key">website.contactus</field>
-            <field name="arch" type="xml">
-                <t name="Contact Us" t-name="website.contactus">
-                    <t t-call="website.layout">
-                        <div id="wrap">
-                            <div class="oe_structure">
-                                <section class="s_title parallax s_parallax_is_fixed bg-black-50 pt24 pb24" data-vcss="001" data-snippet="s_title" data-scroll-background-ratio="1">
-                                    <span class="s_parallax_bg oe_img_bg" style="background-image: url('/web/image/website.s_banner_default_image'); background-position: 50% 0;"/>
-                                    <div class="o_we_bg_filter bg-black-50"/>
-                                    <div class="container">
-                                        <h1>Contact us</h1>
-                                    </div>
-                                </section>
-                            </div>
-                            <div class="container mt-4 mb-5">
-                                <div class="row">
-                                    <div class="col-lg-7 col-xl-6 mr-lg-auto">
-                                        <div class="oe_structure">
-                                            <section class="s_text_block" data-snippet="s_text_block">
-                                                <div class="container">
-                                                    <div class="row">
-                                                        <div class="col-lg-12">
-                                                            <p>
-                                                                Contact us about anything related to our company or services.<br/>
-                                                                We'll do our best to get back to you as soon as possible.
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </section>
-                                        </div>
-                                        <div class="text-center my-3" name="mail_button">
-                                            <a role="button" t-attf-href="mailto:{{ res_company.email }}" class="btn btn-primary" id="o_contact_mail">Send us an email</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 mt-4 mt-lg-0">
-                                        <t t-call="website.company_description"/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="oe_structure mt-2"/>
-                        </div>
-                    </t>
-                </t>
-            </field>
-        </record>
-<!--        <xpath expr="//div[@id='wrap']/div[hasclass('container')]" position="attributes">-->
-<!--            <attribute name="class">container mt-2 mb32</attribute>-->
-<!--        </xpath>-->
-<!--        <xpath expr="//div[hasclass('col-lg-4')]" position="replace">-->
-<!--        </xpath>-->
-<!--        <xpath expr="//div[hasclass('col-lg-8')]" position="after">-->
-<!--            <div class="col-lg-12 te_company_details pt48 pb48">-->
-<!--                <t t-call="theme_clarico_vega.company_description_ept"/>-->
-<!--            </div>-->
-<!--        </xpath>-->
-<!--        <xpath expr="//div[hasclass('col-lg-8')]" position="attributes">-->
-<!--            <attribute name="class">col-lg-12</attribute>-->
-<!--        </xpath>-->
+        <xpath expr="//div[@id='wrap']/div[hasclass('container')]" position="attributes">
+            <attribute name="class">container mt-2 mb32</attribute>
+        </xpath>
+        <xpath expr="//div[hasclass('col-lg-4')]" position="replace">
+        </xpath>
+        <xpath expr="//div[hasclass('col-lg-8')]" position="after">
+            <div class="col-lg-12 te_company_details pt48 pb48">
+                <t t-call="theme_clarico_vega.company_description_ept"/>
+            </div>
+        </xpath>
+        <xpath expr="//div[hasclass('col-lg-8')]" position="attributes">
+            <attribute name="class">col-lg-12</attribute>
+        </xpath>
     </template>
     <!--============ About us default page ===============-->
-<!--    <template id="about_us_ept" inherit_id="website.aboutus" name="About Us">-->
-<!--        <xpath expr="//section[hasclass('s_text_image')]//div[hasclass('col-lg-6')][2]" position="attributes">-->
-<!--            <attribute name="class">col-lg-6 pt16 pb16 te_aboutus_img</attribute>-->
-<!--        </xpath>-->
-<!--    </template>-->
+    <template id="about_us_ept" inherit_id="website_event.index_sidebar_about_us" name="About Us">
+        <xpath expr="//section[hasclass('s_text_image')]//div[hasclass('col-lg-6')][2]" position="attributes">
+            <attribute name="class">col-lg-6 pt16 pb16 te_aboutus_img</attribute>
+        </xpath>
+    </template>
     <!--============== Default Contact Us (replace address section) ============= -->
     <template id="company_description_ept" name="Company Description Ept">
         <address itemscope="itemscope" itemtype="http://schema.org/Organization">

@@ -249,8 +249,6 @@
 	.modal-dialog > .modal-content > .modal-footer {
 		display:block;
 		text-align:right;
-		color: grey !important;
-		te_color: grey !important;
 
 		.modal-footer > :not(:last-child){
 			margin:5px 5px;
@@ -296,7 +294,7 @@
 	{
 		@include style(19,22);
 		&:hover {
-			color: black;
+			color:nth($f_color,19);
 		}
 	}
 }
@@ -647,7 +645,7 @@
 /*================= 05. Grid view ========================*/
 #products_grid:not(.o_wsale_layout_list) {
     @include media-breakpoint-down(md) {
-//         @include wsale-break-table-to-list();
+        @include wsale-break-table-to-list();
     }
     .o_wsale_products_grid_table_wrapper {
         table{
@@ -1183,7 +1181,7 @@
 		{
 			border: 1px solid #ced4da;  /*This color is not used in variables*/
 		    background-color: nth($f_color,5);
-			color: black !important;
+			color:nth($f_color,13);
 			z-index: 0;
 		}
 	}
@@ -1198,7 +1196,7 @@
             {
                 border: 1px solid #ced4da;  /*This color is not used in variables*/
                 background-color: nth($f_color,5);
-                color: black !important;
+                color:nth($f_color,13);
                 z-index: 0;
             }
         }
@@ -1602,7 +1600,7 @@ button:focus {
         padding: 10px !important;
         .fa {
             font-size: 2rem;
-            color: black;
+            color: nth($f_color,20);
         }
     }
     button.owl-next {
@@ -1611,7 +1609,7 @@ button:focus {
         padding: 10px !important;
         .fa {
             font-size: 2rem;
-            color: black;
+            color: nth($f_color,20);
         }
     }
     .owl-carousel .owl-item img {
@@ -1653,7 +1651,7 @@ button:focus {
             padding: 8px !important;
             .fa {
                 font-size: 1.2rem;
-                color: black;
+                color: nth($f_color,20);
             }
         }
         .owl-prev {
@@ -1662,7 +1660,7 @@ button:focus {
             padding: 8px !important;
             .fa {
                 font-size: 1.2rem;
-                color: black;
+                color: nth($f_color,20);
             }
         }
         .owl-dots {

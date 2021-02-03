@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <!-- ================ Added new custom Header in customize option ================ -->
-    <template id="theme_customize_ept" inherit_id="website.user_navbar">
-        <xpath expr="//t[@t-set='html_data']" position="after">
-
+    <template id="theme_customize_ept" inherit_id="website.theme_customize">
+        <xpath expr="//content[@id='theme_customize_content_fonts']"
+               position="after">
             <!-- Button  Styles-->
             <content id="theme_customize_content_button" string="Buttons"
                      title="Choose your Button styles">
@@ -190,17 +190,17 @@
                     </checkbox>
                 </list>
                 <!-- Product Label Styles -->
-<!--                <list string="Product Label">-->
-<!--                    <checkbox>-->
-<!--                        <opt data-xmlid="theme_clarico_vega.clarico_shop_products_label" data-reload="/"-->
-<!--                             string="Product Label"/>-->
-<!--                    </checkbox>-->
-<!--                    <more data-depends="">-->
-<!--                        <list>-->
-<!--                            <opt data-widget="color" data-color="product_label" string="Default Color of Label"/>-->
-<!--                        </list>-->
-<!--                    </more>-->
-<!--                </list>-->
+                <list string="Product Label">
+                    <checkbox>
+                        <opt data-xmlid="theme_clarico_vega.clarico_shop_products_label" data-reload="/"
+                             string="Product Label"/>
+                    </checkbox>
+                    <more data-depends="">
+                        <list>
+                            <opt data-widget="color" data-color="product_label" string="Default Color of Label"/>
+                        </list>
+                    </more>
+                </list>
             </content>
             <!-- End by ept_1 -->
         </xpath>

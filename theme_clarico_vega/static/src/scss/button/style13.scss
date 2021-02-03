@@ -4,7 +4,7 @@
     padding: 0.675rem 1.2rem;
     @include position(relative);
     background-color:nth($f_color,27);
-    color: black !important;
+    color:nth($f_color,19);
     transition: all 600ms cubic-bezier(0.77, 0, 0.175, 1);
     border-top: 1px solid nth($f_color,19);
     border-bottom: 1px solid nth($f_color,19);
@@ -12,27 +12,27 @@
 
     &.btn-secondary, &.btn-link
     {
-        border-color: black !important;
+        border-color:theme-color('secondary') !important;
         border-left:0 !important;
         border-right:0 !important;
-        color: black !important;
-        background-color: white !important;
+        color:theme-color('secondary') !important;
+        background-color:nth($f_color,27) !important;
         &:after
         {
-            background-color: black;
+            background-color: theme-color('secondary');
         }
         &:hover
         {
-            color: black !important;
+            color:nth($f_color,5) !important;
         }
     }
     &.btn-danger
     {
-        border-color: red;
-        color: red;
+        border-color: theme-color('danger');
+        color: theme-color('danger');
         &:after
         {
-            background-color: red;
+            background-color: theme-color('danger');
         }
     }
 

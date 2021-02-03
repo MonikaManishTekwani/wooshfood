@@ -1,6 +1,6 @@
 /*====================== Button Style 4 =============================*/
 .te_theme_button{
-	color: black !important;
+	color: nth($f_color,5);
 	background-color:nth($f_color,27);
 	z-index: 1;
     padding: 0.7rem 1.8rem;

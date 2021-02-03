@@ -203,7 +203,7 @@
 		}
 		button.btn.btn-primary.oe_search_button
         {
-            color: grey !important;
+            color:nth($f_color,5);
             padding: 0.1rem 1rem;
             background-color: transparent;
             border-color: transparent;
@@ -239,7 +239,6 @@
             &:hover{
                 .dropdown-item{
                     left:unset;
-                    color: black !important;
                 }
             }
         }
@@ -397,7 +396,7 @@
 	    }
 	    a.o_wsale_my_cart, a.te_wish_icon_head{
 	         .badge-primary{
-                color:grey !important;
+                color:nth($f_color,19);
                 background-color:nth($f_color,5);
             }
 	    }

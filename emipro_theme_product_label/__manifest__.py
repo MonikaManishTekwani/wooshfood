@@ -8,7 +8,7 @@
     'depends':['emipro_theme_base'],
 
     'data': [
-        'views/product_label_view.xml',
+        # 'views/product_label_view.xml',
         'security/ir.model.access.csv',
     ],
 

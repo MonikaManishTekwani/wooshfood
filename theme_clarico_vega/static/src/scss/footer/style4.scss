@@ -36,7 +36,7 @@ h5.footer-sub-title::before {
     display: inline-block;
     width: 30px;
     height: 2px;
-//     background-color: rgba(nth($f_color,3),0.8);
+    background-color: rgba(nth($f_color,3),0.8);
 }
 h5.footer-sub-title {
     position: relative;
@@ -63,10 +63,12 @@ ul.te_footer_info_ept li a{
     word-break: break-word;
     &:hover{
         padding-left: 10px;
+        color: black !important;
     }
 }
 ul.te_footer_info_text.te_footer_info_ept li a:hover{
     padding-left: 0px;
+    color: black !important;
 }
 .footer_top_title_div > span {
     display: none;
@@ -74,6 +76,8 @@ ul.te_footer_info_text.te_footer_info_ept li a:hover{
         display: block;
         @include position(absolute,-4px,15px);
 		@include style(10,3);
+		color: black !important;
+
     }
 }
 #footer section.s_text_block.pt32 {
@@ -138,7 +142,7 @@ ul.te_footer_info_text{
 	display: inline-block;
     .lang_btn_name
 	{
-        color:black !important;
+        color:#fff !important;
     }
 	.js_language_selector
 	{
